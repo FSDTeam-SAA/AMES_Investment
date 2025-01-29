@@ -1,101 +1,92 @@
-import Checkbox from "@/Components/Checkbox";
-import InputError from "@/Components/InputError";
-import InputLabel from "@/Components/InputLabel";
-import TextInput from "@/Components/TextInput";
-import GuestLayout from "@/Layouts/GuestLayout";
-import { Head, Link, useForm } from "@inertiajs/react";
+import { useState } from "react";
+import { useForm } from "@inertiajs/react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { EyeIcon, EyeOffIcon } from "lucide-react";
 
 export default function Login({ status, canResetPassword }) {
-    const { data, setData, post, processing, errors, reset } = useForm({
-        email: "",
-        password: "",
-        remember: false,
+  const { data, setData, post, processing, errors, reset } = useForm({
+    email: "",
+    password: "",
+    remember: false,
+  });
+  const [showPassword, setShowPassword] = useState(false);
+
+  const submit = (e) => {
+    e.preventDefault();
+    post(route("login"), {
+      onFinish: () => reset("password"),
     });
+  };
 
-    const submit = (e) => {
-        e.preventDefault();
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-black">
+      <Card className="max-w-[407px] bg-zinc-900 border-zinc-800">
+        <CardHeader className="space-y-1">
+          <CardTitle className="text-2xl text-center font-bold text-white">Login</CardTitle>
+          <CardDescription className="text-center text-zinc-400">Let's login into your account first</CardDescription>
+        </CardHeader>
+        <CardContent>
+          {status && <div className="text-green-500 text-center">{status}</div>}
+          <form onSubmit={submit} className="space-y-4">
+            <div className="space-y-2">
+              <Input
+                type="email"
+                name="email"
+                placeholder="yourname@gmail.com"
+                className="bg-zinc-800 border-zinc-700 text-white"
+                value={data.email}
+                onChange={(e) => setData("email", e.target.value)}
+              />
+              {errors.email && <div className="text-red-500 text-sm">{errors.email}</div>}
+            </div>
 
-        post(route("login"), {
-            onFinish: () => reset("password"),
-        });
-    };
-
-    return (
-        <GuestLayout>
-            <Head title="Log in" />
-
-            {status && (
-                <div className="mb-4 text-sm font-medium text-green-600">
-                    {status}
-                </div>
-            )}
-
-            <form onSubmit={submit}>
-                <div>
-                    <InputLabel htmlFor="email" value="Email" />
-
-                    <TextInput
-                        id="email"
-                        type="email"
-                        name="email"
-                        value={data.email}
-                        className="mt-1 block w-full"
-                        autoComplete="username"
-                        isFocused={true}
-                        onChange={(e) => setData("email", e.target.value)}
-                    />
-
-                    <InputError message={errors.email} className="mt-2" />
-                </div>
-
-                <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
-
-                    <TextInput
-                        id="password"
-                        type="password"
-                        name="password"
-                        value={data.password}
-                        className="mt-1 block w-full"
-                        autoComplete="current-password"
-                        onChange={(e) => setData("password", e.target.value)}
-                    />
-
-                    <InputError message={errors.password} className="mt-2" />
-                </div>
-
-                <div className="mt-4 block">
-                    <label className="flex items-center">
-                        <Checkbox
-                            name="remember"
-                            checked={data.remember}
-                            onChange={(e) =>
-                                setData("remember", e.target.checked)
-                            }
-                        />
-                        <span className="ms-2 text-sm text-gray-600">
-                            Remember me
-                        </span>
-                    </label>
-                </div>
-
-                <div className="mt-4 flex items-center justify-end">
-                    {canResetPassword && (
-                        <Link
-                            href={route("password.request")}
-                            className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                        >
-                            Forgot your password?
-                        </Link>
-                    )}
-                </div>
+            <div className="space-y-2">
+              <div className="relative">
+                <Input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  placeholder="********"
+                  className="bg-zinc-800 border-zinc-700 text-white"
+                  value={data.password}
+                  onChange={(e) => setData("password", e.target.value)}
+                />
                 <button
-                    className="w-full h-[40px] text-white rounded-lg ms-4 bg-[linear-gradient(0deg,_#5350F2,_#5350F2),_linear-gradient(90deg,_#3FBC79_0%,_#1B6DFA_105.56%)]"
-                    disabled={processing}
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-2.5 text-zinc-400 hover:text-zinc-300"
                 >
-                    Log in
+                  {showPassword ? <EyeOffIcon size={16} /> : <EyeIcon size={16} />}
                 </button>
-            </form>
-        </GuestLayout>
-    );
+              </div>
+              {errors.password && <div className="text-red-500 text-sm">{errors.password}</div>}
+              <div className="text-right">
+                {canResetPassword && (
+                  <a href={route("password.request")} className="text-sm text-blue-400 hover:text-blue-300">
+                    Forgot Password?
+                  </a>
+                )}
+              </div>
+            </div>
+
+            <Button
+              type="submit"
+              className="w-full bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white"
+              disabled={processing}
+            >
+              {processing ? "Logging in..." : "Login"}
+            </Button>
+
+            <div className="text-center text-sm">
+              <span className="text-zinc-400">Don't have an account? </span>
+              <a href="#" className="text-blue-400 hover:text-blue-300">
+                Register Here
+              </a>
+            </div>
+          </form>
+        </CardContent>
+      </Card>
+    </div>
+  );
 }
