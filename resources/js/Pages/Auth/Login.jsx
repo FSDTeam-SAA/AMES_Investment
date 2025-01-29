@@ -85,10 +85,9 @@ export default function Login({ status, canResetPassword }) {
                 <span className="bg-zinc-900 px-2 text-zinc-400">Or</span>
               </div>
             </div>
-            <Button
-              type="button"
-              variant="outline"
-              className="w-full bg-zinc-800 border-zinc-700 text-white hover:bg-zinc-700"
+            <a
+              href="/login-with-google"
+              className="flex items-center justify-center w-full bg-zinc-800 border border-zinc-700 text-white hover:bg-zinc-700 px-4 py-2 rounded-md"
             >
               <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
                 <path
@@ -109,7 +108,8 @@ export default function Login({ status, canResetPassword }) {
                 />
               </svg>
               Login with Google
-            </Button>
+            </a>
+
 
             <div className="text-center text-sm">
               <span className="text-zinc-400">Don't have an account? </span>
