@@ -58,7 +58,7 @@ export function NavBar() {
                         </li>
                         <li>
                             <Link
-                                href="/"
+                                href="/about-us"
                                 className="text-[16px] font-medium text-white hover:text-white/80"
                             >
                                 About Us
@@ -110,7 +110,7 @@ export function NavBar() {
                                 Features
                             </Link>
                             <Link
-                                href="/"
+                                href="/about-us"
                                 className="text-[16px] font-medium text-white hover:text-white/80"
                                 onClick={() => setIsMenuOpen(false)}
                             >

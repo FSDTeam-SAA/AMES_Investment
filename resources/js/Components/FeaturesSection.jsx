@@ -4,7 +4,7 @@ import process from "../../../public/img/process.png";
 
 export default function FeaturesSection() {
   return (
-    <div className="min-h-screen bg-[#111111] text-white">
+    <div className="min-h-screen lg:h-[700px] bg-[#111111] text-white">
       <div className="container mx-auto px-4 py-16 md:py-24">
         {/* Features Label */}
        
