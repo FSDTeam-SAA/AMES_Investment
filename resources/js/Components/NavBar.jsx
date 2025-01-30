@@ -80,7 +80,7 @@ export function NavBar() {
                     <Link
                      href="login"
                         variant="ghost"
-                        className="text-white bg-[#44444A] hover:text-white/80 border-0 py-[8px] px-[24px] rounded-[6px]"
+                        className="text-white bg-[#44444A] hover:text-white/80 border-0 py-[8px] px-[24px] rounded-[6px] shadow-[inset_0px_7.4px_18.5px_0px_rgba(255,255,255,0.11)] p-6 bg-gray-800"
                     >
                         Login
                     </Link>
@@ -124,10 +124,10 @@ export function NavBar() {
                                 Contact
                             </Link>
 
-                            <div className="flex flex-col space-y-2 pt-2">
+                            <div className="flex flex-col space-y-2 pt-2 ">
                                 <Button
                                     variant="ghost"
-                                    className="text-white hover:text-white/80 hover:text-black"
+                                    className="text-white hover:text-white/80 hover:text-black "
                                 >
                                     Login
                                 </Button>
