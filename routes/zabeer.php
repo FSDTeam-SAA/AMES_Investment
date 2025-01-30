@@ -5,5 +5,5 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
     
-Route::get('login-with-google', [GoogleAuthController::class, 'loginWithGoogle'])
-->name('loginWithGoogle');
+Route::get('auth/google/redirect', [GoogleAuthController::class, 'redirect'])->name('google.redirect');
+Route::get('auth/google/callback', [GoogleAuthController::class, 'callback'])->name('google.callback');
