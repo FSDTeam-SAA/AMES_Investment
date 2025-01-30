@@ -43,7 +43,7 @@ export function NavBar() {
                         <li>
                             <Link
                                 href="/"
-                                className="text-sm font-medium text-white hover:text-white/80"
+                                className="text-[16px] font-medium text-white hover:text-white/80"
                             >
                                 Home
                             </Link>
@@ -51,7 +51,7 @@ export function NavBar() {
                         <li>
                             <Link
                                 href="/"
-                                className="text-sm font-medium text-white hover:text-white/80"
+                                className="text-[16px] font-medium text-white hover:text-white/80"
                             >
                                 Features
                             </Link>
@@ -59,7 +59,7 @@ export function NavBar() {
                         <li>
                             <Link
                                 href="/"
-                                className="text-sm font-medium text-white hover:text-white/80"
+                                className="text-[16px] font-medium text-white hover:text-white/80"
                             >
                                 About Us
                             </Link>
@@ -67,7 +67,7 @@ export function NavBar() {
                         <li>
                             <Link
                                 href="/"
-                                className="text-sm font-medium text-white hover:text-white/80"
+                                className="text-[16px] font-medium text-white hover:text-white/80"
                             >
                                 Contacts
                             </Link>
@@ -97,28 +97,28 @@ export function NavBar() {
 
                             <Link
                                 href="/"
-                                className="text-sm font-medium text-white hover:text-white/80"
+                                className="text-[16px] font-medium text-white hover:text-white/80"
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 Home
                             </Link>
                             <Link
                                 href="/"
-                                className="text-sm font-medium text-white hover:text-white/80"
+                                className="text-[16px] font-medium text-white hover:text-white/80"
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 Features
                             </Link>
                             <Link
                                 href="/"
-                                className="text-sm font-medium text-white hover:text-white/80"
+                                className="text-[16px] font-medium text-white hover:text-white/80"
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 About us
                             </Link>
                             <Link
                                 href="/"
-                                className="text-sm font-medium text-white hover:text-white/80"
+                                className="text-[16px] font-medium text-white hover:text-white/80"
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 Contact

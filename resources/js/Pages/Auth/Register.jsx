@@ -1,8 +1,10 @@
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
+import RegisterMultiStepForm from '@/Components/RegisterMultiStepForm';
 
 import TextInput from '@/Components/TextInput';
 import GuestLayout from '@/Layouts/GuestLayout';
+import MainLayout from '@/Layouts/MainLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Register() {
@@ -22,7 +24,9 @@ export default function Register() {
     };
 
     return (
-        <GuestLayout>
+        
+            <MainLayout>
+                <RegisterMultiStepForm/>
             <Head title="Register" />
 
             <form onSubmit={submit}>
@@ -115,6 +119,9 @@ export default function Register() {
                     </button>
                 </div>
             </form>
-        </GuestLayout>
+
+</MainLayout>
+            
+      
     );
 }

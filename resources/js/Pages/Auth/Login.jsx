@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useForm } from "@inertiajs/react";
+import { Link, useForm } from "@inertiajs/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -116,9 +116,9 @@ export default function Login({ status, canResetPassword }) {
   
               <div className="text-center text-sm">
                 <span className="text-zinc-400">Don't have an account? </span>
-                <a href="/register" className="text-blue-400 hover:text-blue-300">
+                <Link href="/register" className="text-blue-400 hover:text-blue-300">
                   Register Here
-                </a>
+                </Link>
               </div>
             </form>
           </CardContent>
