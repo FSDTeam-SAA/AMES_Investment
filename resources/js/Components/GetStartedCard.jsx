@@ -5,14 +5,14 @@ import bgLines from "../../../public/img/BgLines.png";
 
 const GetStartedCard = ({ title }) => {
     return (
-        <div className="flex items-center justify-center p-6 mt-[-200px]">
+        <div className="flex items-center justify-center p-6 ">
             <div
                 className="w-full max-w-6xl rounded-[2rem] p-16 relative overflow-hidden"
                 style={{
                     background: "linear-gradient(to right, #4ADE80, #3B82F6)",
                 }}
             >
-                {/* Noise overlay */}
+                {/* noise background */}
                 <div
                     className="absolute inset-0"
                     style={{
@@ -22,7 +22,6 @@ const GetStartedCard = ({ title }) => {
                     }}
                 />
 
-                {/* Get Started button */}
                 <div className="flex justify-center mb-4 relative">
                     <Button
                         variant="primary"
@@ -33,7 +32,6 @@ const GetStartedCard = ({ title }) => {
                     </Button>
                 </div>
 
-                {/* Main content */}
                 <div className="relative space-y-6 text-center">
                     <h1 className="text-2xl md:text-4xl font-semibold text-white mx-auto">
                         {title}

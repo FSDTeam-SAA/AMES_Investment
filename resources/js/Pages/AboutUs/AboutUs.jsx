@@ -4,8 +4,6 @@ import React from "react";
 import img from "../../../../public/img/aboutS2.png";
 import img2 from "../../../../public/img/about-s3.png";
 import dashboard from "../../../../public/img/Dashboad.png";
-import bgLines from "../../../../public/img/BgLines.png";
-import { Star } from "lucide-react";
 import MissionAndValue from "./MissionAndValue";
 import GetStartedCard from "@/Components/GetStartedCard";
 
@@ -24,7 +22,7 @@ const AboutUs = () => {
                     </div>
 
                     <div className="max-w-3xl mx-auto text-center space-y-6 mb-[56px]">
-                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium text-white">
+                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium ">
                             About Ames Investment Systems
                         </h1>
 
@@ -36,7 +34,7 @@ const AboutUs = () => {
 
                         <Button
                             variant="secondary"
-                            className="text-[14px] bg-gray-900/60 text-white mt-4 "
+                            className="text-[14px] bg-[#161618] text-white mt-4 "
                         >
                             Download Our Vision Paper
                         </Button>
@@ -100,10 +98,12 @@ const AboutUs = () => {
                 </div>
             </section>
 
-            <MissionAndValue/>
+            <MissionAndValue />
 
             {/* sign up now card */}
-            <GetStartedCard title="Take the First Step to Smarter Investment Choices" />
+            <div className="lg:mt-[-300px]">
+                <GetStartedCard title="Take the First Step to Smarter Investment Choices" />
+            </div>
         </MainLayout>
     );
 };

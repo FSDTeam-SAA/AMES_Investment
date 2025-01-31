@@ -1,4 +1,5 @@
 import FeaturesSection from "@/Components/FeaturesSection";
+import GetStartedCard from "@/Components/GetStartedCard";
 import HomeHero from "@/Components/HomeHero";
 import HowItWorks from "@/Components/HowItWorks";
 import MainLayout from "@/Layouts/MainLayout";
@@ -10,9 +11,12 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
             <Head title="Welcome" />
 
             <MainLayout>
-           <HomeHero/>
-                <FeaturesSection/>
-                <HowItWorks/>
+                <HomeHero />
+                <FeaturesSection />
+                <HowItWorks />
+                <div className="lg:mt-[-300px]">
+                    <GetStartedCard title="Take the First Step to Smarter Investment Choices" />
+                </div>
             </MainLayout>
         </>
     );

@@ -48,14 +48,7 @@ export function NavBar() {
                                 Home
                             </Link>
                         </li>
-                        {/* <li>
-                            <Link
-                                href="/"
-                                className="text-[16px] font-medium text-white hover:text-white/80"
-                            >
-                                Features
-                            </Link>
-                        </li> */}
+                        
                         <li>
                             <Link
                                 href="/about-us"
@@ -70,6 +63,14 @@ export function NavBar() {
                                 className="text-[16px] font-medium text-white hover:text-white/80"
                             >
                                 Contacts
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                href="/pricing-plans"
+                                className="text-[16px] font-medium text-white hover:text-white/80"
+                            >
+                                Pricing
                             </Link>
                         </li>
                     </ul>
