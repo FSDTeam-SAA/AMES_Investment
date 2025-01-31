@@ -14,10 +14,10 @@ const AboutUs = () => {
         <MainLayout>
             <section>
                 <div className="min-h-[600px] w-full flex flex-col items-center justify-center px-4 py-16 bg-gradient-to-b from-gray-950 to-teal-950/30 relative">
-                    <div className="">
+                    <div className=" mb-5">
                         <Button
                             variant="ghost"
-                            className="text-gray-300 hover:text-white hover:bg-transparent "
+                            className="hover:bg-transparent "
                         >
                             About Us →
                         </Button>

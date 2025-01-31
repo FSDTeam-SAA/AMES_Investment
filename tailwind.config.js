@@ -65,7 +65,7 @@ export default {
     				'4': 'hsl(var(--chart-4))',
     				'5': 'hsl(var(--chart-5))',
     			},
-				's-border': 'rgba(68, 68, 74, 1)'
+				'secondary-border': 'rgba(68, 68, 74, 1)'
     		}
     	}
     },

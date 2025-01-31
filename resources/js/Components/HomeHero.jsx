@@ -9,9 +9,10 @@ const HomeHero = () => {
             <section>
                 <div className="min-h-[600px] w-full flex flex-col items-center justify-center px-4 py-16 bg-gradient-to-b from-gray-950 to-teal-950/30 relative">
                     <div className="">
+                        
                         <Button
                             variant="ghost"
-                            className="text-gray-300 text-[12px] font-mediums hover:text-white hover:bg-transparent mb-[20px] shadow-[inset_0px_7.4px_18.5px_0px_rgba(255,255,255,0.11)] pl-[16px] pr-[10px]  rounded-full border-2 border-[#44444A] bg-gray-800"
+                            className="text-gray-300 text-[12px] mb-5"
                         >
                             New: Our AI integration just landed <ArrowRight />
                         </Button>
