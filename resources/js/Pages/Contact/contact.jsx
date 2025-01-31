@@ -1,57 +1,72 @@
-"use client"
+"use client";
 
 import { useState } from "react";
+import { router } from "@inertiajs/react";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import MainLayout from "@/Layouts/MainLayout";
 import msgIcon from "../../../../public/img/message-text.png";
 export default function ContactPage() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [message, setMessage] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+    const [message, setMessage] = useState("");
 
-  async function handleSubmit(event) {
-    event.preventDefault();
-    setIsLoading(true);
-    setMessage("");
+    async function handleSubmit(event) {
+        event.preventDefault();
+        setIsLoading(true);
+        setMessage("");
 
-    const formData = new FormData(event.target);
+        const formData = new FormData(event.target);
 
-    try {
-      const response = await submitContactForm(formData);
-      console.log("Form submitted:", {
-        name: formData.get("name"),
-        email: formData.get("email"),
-        question: formData.get("question"),
-      });
-      setMessage(response.message);
-    } catch (error) {
-      console.error("Submission error:", error);
-      setMessage("Something went wrong. Please try again.");
-    } finally {
-      setIsLoading(false);
+        try {
+            const response = await submitContactForm(formData);
+            // post(route("contact.store"));
+
+            const data = {
+                name: formData.get("name"),
+                email: formData.get("email"),
+                question: formData.get("question"),
+            };
+            setMessage(response.message);
+            router.post(route("contact.store"), data, {
+                onSuccess: () => {
+                    setMessage("Message sent successfully!");
+                    event.target.reset();
+                    setIsLoading(false);
+                },
+                onError: (errors) => {
+                    console.error(errors);
+                    setIsLoading(false);
+                },
+            });
+        } catch (error) {
+            console.error("Submission error:", error);
+            setMessage("Something went wrong. Please try again.");
+        } finally {
+            setIsLoading(false);
+        }
     }
-  }
 
-  async function submitContactForm(formData) {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    async function submitContactForm(formData) {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    console.log("Form submission:", {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      question: formData.get("question"),
-    });
+        console.log("Form submission:", {
+            name: formData.get("name"),
+            email: formData.get("email"),
+            question: formData.get("question"),
+        });
 
-    return {
-      success: true,
-      message: "Thank you for your message. We'll get back to you soon!",
-    };
-  }
+        return {
+            success: true,
+            message: "Thank you for your message. We'll get back to you soon!",
+        };
+    }
 
-  return (
-    <MainLayout>
-    <div className=" w-full bg-gradient-to-br from-black to-slate-900 relative overflow-hidden">
-      {/* <div
+    return (
+        <MainLayout>
+            <div className=" w-full bg-gradient-to-br from-black to-slate-900 relative overflow-hidden">
+                {/* <div
         className="absolute inset-0 w-full h-full opacity-30"
         style={{
 
@@ -59,47 +74,125 @@ export default function ContactPage() {
         }}
       /> */}
 
-      <div className=" mx-auto px-4 py-12">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <h1 className="text-4xl md:text-5xl font-bold text-white">We'd Love to Hear from You!</h1>
-              <p className="text-gray-400">Whether you have a question, need assistance, or just want to say hello, our team is here for you.</p>
-            </div>
-            <div className="space-y-4 flex flex-col max-w-[252px]">
-              <Button variant="ghost" className="px-10 flex justify-start" ><img src={msgIcon} alt="message" /> Schedule a Meeting</Button>
-              <Button variant="ghost" className="px-10 flex justify-start" ><img src={msgIcon} alt="message" /> Join our Discord</Button>
-              <Button variant="ghost" className="px-10 flex justify-start" ><img src={msgIcon} alt="message" />  Visit our FAQ</Button>
-              <Button variant="ghost" className="px-10 flex justify-start" ><img src={msgIcon} alt="message" /> Talk To Our Chat Bot</Button>
+                <div className=" mx-auto px-4 py-12">
+                    <div className="grid lg:grid-cols-2 gap-12 items-start">
+                        <div className="space-y-8">
+                            <div className="space-y-4">
+                                <h1 className="text-4xl md:text-5xl font-bold text-white">
+                                    We'd Love to Hear from You!
+                                </h1>
+                                <p className="text-gray-400">
+                                    Whether you have a question, need
+                                    assistance, or just want to say hello, our
+                                    team is here for you.
+                                </p>
+                            </div>
+                            <div className="space-y-4 flex flex-col max-w-[252px]">
+                                <Button
+                                    variant="ghost"
+                                    className="px-10 flex justify-start"
+                                >
+                                    <img src={msgIcon} alt="message" /> Schedule
+                                    a Meeting
+                                </Button>
+                                <Button
+                                    variant="ghost"
+                                    className="px-10 flex justify-start"
+                                >
+                                    <img src={msgIcon} alt="message" /> Join our
+                                    Discord
+                                </Button>
+                                <Button
+                                    variant="ghost"
+                                    className="px-10 flex justify-start"
+                                >
+                                    <img src={msgIcon} alt="message" /> Visit
+                                    our FAQ
+                                </Button>
+                                <Button
+                                    variant="ghost"
+                                    className="px-10 flex justify-start"
+                                >
+                                    <img src={msgIcon} alt="message" /> Talk To
+                                    Our Chat Bot
+                                </Button>
+                            </div>
+                        </div>
 
+                        <div className="bg-gray-900/50 backdrop-blur-sm rounded-lg p-6 space-y-6">
+                            <h2 className="text-2xl font-bold text-white mb-8">
+                                Contact Us
+                            </h2>
+                            <form onSubmit={handleSubmit} className="space-y-6">
+                                <div className="space-y-2">
+                                    <label
+                                        htmlFor="name"
+                                        className="text-sm text-gray-400"
+                                    >
+                                        What's your name?
+                                    </label>
+                                    <Input
+                                        id="name"
+                                        name="name"
+                                        placeholder="yourname"
+                                        className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500"
+                                        required
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <label
+                                        htmlFor="email"
+                                        className="text-sm text-gray-400"
+                                    >
+                                        Email Address
+                                    </label>
+                                    <Input
+                                        id="email"
+                                        name="email"
+                                        type="email"
+                                        placeholder="yourname@gmail.com"
+                                        className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500"
+                                        required
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <label
+                                        htmlFor="question"
+                                        className="text-sm text-gray-400"
+                                    >
+                                        What's your question?
+                                    </label>
+                                    <Textarea
+                                        id="question"
+                                        name="question"
+                                        placeholder="Describe your questions here..."
+                                        className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500 min-h-[120px]"
+                                        required
+                                    />
+                                </div>
+                                {message && (
+                                    <div
+                                        className={`text-sm ${
+                                            message.includes("error")
+                                                ? "text-red-400"
+                                                : "text-green-400"
+                                        }`}
+                                    >
+                                        {message}
+                                    </div>
+                                )}
+                                <Button
+                                    type="submit"
+                                    disabled={isLoading}
+                                    className="w-full"
+                                >
+                                    {isLoading ? "Submitting..." : "Submit"}
+                                </Button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-
-          <div className="bg-gray-900/50 backdrop-blur-sm rounded-lg p-6 space-y-6">
-            <h2 className="text-2xl font-bold text-white mb-8">Contact Us</h2>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="space-y-2">
-                <label htmlFor="name" className="text-sm text-gray-400">What's your name?</label>
-                <Input id="name" name="name" placeholder="yourname" className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500" required />
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="email" className="text-sm text-gray-400">Email Address</label>
-                <Input id="email" name="email" type="email" placeholder="yourname@gmail.com" className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500" required />
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="question" className="text-sm text-gray-400">What's your question?</label>
-                <Textarea id="question" name="question" placeholder="Describe your questions here..." className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500 min-h-[120px]" required />
-              </div>
-              {message && <div className={`text-sm ${message.includes("error") ? "text-red-400" : "text-green-400"}`}>{message}</div>}
-              <Button type="submit"  disabled={isLoading} className="w-full">
-                {isLoading ? "Submitting..." : "Submit"}
-              </Button>
-              
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    </MainLayout>
-  );
+        </MainLayout>
+    );
 }
