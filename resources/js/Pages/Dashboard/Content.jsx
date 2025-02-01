@@ -1,8 +1,10 @@
+import DashboardHome from "./Home/DashboardHome"
+
 const Content = ({ activeItem }) => {
     const renderContent = () => {
       switch (activeItem) {
         case "home":
-          return <h2>Welcome to the Home Page</h2>
+          return <DashboardHome />
         case "about":
           return <h2>About Us</h2>
         case "services":
