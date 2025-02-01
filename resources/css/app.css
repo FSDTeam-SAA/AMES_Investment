@@ -80,3 +80,12 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+.gradient-bg{
+  background: rgb(63,188,121);
+background: -moz-radial-gradient(circle, rgba(63,188,121,0.7875525210084033) 8%, rgba(63,188,166,0.7679446778711485) 43%, rgba(27,109,250,0.03405112044817926) 100%);
+background: -webkit-radial-gradient(circle, rgba(63,188,121,0.7875525210084033) 8%, rgba(63,188,166,0.7679446778711485) 43%, rgba(27,109,250,0.03405112044817926) 100%);
+background: radial-gradient(circle, rgba(12, 247, 122, 0.466) 8%, rgba(24, 138, 117, 0.349) 43%, rgba(27,109,250,0.03405112044817926) 60%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3fbc79",endColorstr="#1b6dfa",GradientType=1);
+}
