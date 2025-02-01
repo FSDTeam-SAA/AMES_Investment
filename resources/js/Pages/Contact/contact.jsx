@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import MainLayout from "@/Layouts/MainLayout";
-import msgIcon from "../../../../public/img/message-text.png";
+import ExternalButtons from "./ExternalButtons";
 export default function ContactPage() {
     const [isLoading, setIsLoading] = useState(false);
     const [message, setMessage] = useState("");
@@ -76,49 +76,7 @@ export default function ContactPage() {
 
                 <div className=" mx-auto px-4 py-12">
                     <div className="grid lg:grid-cols-2 gap-12 items-start">
-                        <div className="space-y-8">
-                            <div className="space-y-4">
-                                <h1 className="text-4xl md:text-5xl font-bold text-white">
-                                    We'd Love to Hear from You!
-                                </h1>
-                                <p className="text-gray-400">
-                                    Whether you have a question, need
-                                    assistance, or just want to say hello, our
-                                    team is here for you.
-                                </p>
-                            </div>
-                            <div className="space-y-4 flex flex-col max-w-[252px]">
-                                <Button
-                                    variant="ghost"
-                                    className="px-10 flex justify-start"
-                                >
-                                    <img src={msgIcon} alt="message" /> Schedule
-                                    a Meeting
-                                </Button>
-                                <Button
-                                    variant="ghost"
-                                    className="px-10 flex justify-start"
-                                >
-                                    <img src={msgIcon} alt="message" /> Join our
-                                    Discord
-                                </Button>
-                                <Button
-                                    variant="ghost"
-                                    className="px-10 flex justify-start"
-                                >
-                                    <img src={msgIcon} alt="message" /> Visit
-                                    our FAQ
-                                </Button>
-                                <Button
-                                    variant="ghost"
-                                    className="px-10 flex justify-start"
-                                >
-                                    <img src={msgIcon} alt="message" /> Talk To
-                                    Our Chat Bot
-                                </Button>
-                            </div>
-                        </div>
-
+                        <ExternalButtons />
                         <div className="bg-gray-900/50 backdrop-blur-sm rounded-lg p-6 space-y-6">
                             <h2 className="text-2xl font-bold text-white mb-8">
                                 Contact Us

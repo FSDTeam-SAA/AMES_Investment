@@ -22,7 +22,7 @@ const AboutUs = () => {
                     </div>
 
                     <div className="max-w-3xl mx-auto text-center space-y-6 mb-[56px]">
-                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium ">
+                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium text-[#FFFFFF]">
                             About Ames Investment Systems
                         </h1>
 
@@ -48,7 +48,7 @@ const AboutUs = () => {
                     </div>
                 </div>
             </section>
-            <section className="flex flex-wrap w-full justify-center items-center md:flex-row flex-col mb-[40px] lg:mb-[80]">
+            <section className="flex flex-wrap w-full justify-center items-center md:flex-row flex-col mb-[40px] lg:mb-[80px] mt-[40px] lg:mt-[80px]">
                 <div className="w-full md:w-1/2 flex justify-center">
                     <img
                         src={img}
