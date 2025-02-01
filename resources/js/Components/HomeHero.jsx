@@ -7,13 +7,7 @@ const HomeHero = () => {
     return (
         <div>
             <section>
-                <div
-                    style={{
-                        backgroundImage: `url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Vector%202-iKlLLxEVsFNTr0EMKK8Hv0NciUrFOZ.png')`,
-                        backgroundBlendMode: "screen",
-                    }}
-                    className="min-h-[600px] w-full flex flex-col items-center justify-center lg:pt-[120px] px-4 py-16 bg-gradient-to-b from-gray-950 to-teal-950/30 relative "
-                >
+                <div className="brackdrop-blur gradient-bg min-h-[600px] w-full flex flex-col items-center justify-center lg:pt-[120px] px-4 py-16 bg-gradient-to-b from-gray-950 to-teal-950/30 relative ">
                     <div className="max-w-3xl mx-auto text-center space-y-6 mb-[56px]">
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium text-white">
                             Unlock Smarter Investments with Cutting-Edge AI
