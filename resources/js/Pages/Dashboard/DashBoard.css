@@ -1,0 +1,40 @@
+.app {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    width: 200px;
+    background-color: #f0f0f0;
+    padding: 20px;
+  }
+  
+  .sidebar h2 {
+    margin-bottom: 20px;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    cursor: pointer;
+    padding: 10px;
+    margin-bottom: 5px;
+  }
+  
+  .sidebar li:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .sidebar li.active {
+    background-color: #d0d0d0;
+    font-weight: bold;
+  }
+  
+  .content {
+    flex-grow: 1;
+    padding: 20px;
+  }
+  
