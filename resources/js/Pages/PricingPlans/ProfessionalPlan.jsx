@@ -19,6 +19,7 @@ const ProfessionalPlan = () => {
                     <p className="text-white/90">2/20 Pricing</p>
                 </div>
               </div>
+              <div className="border-t border-[#FFFFFF]"/>
                 
                 <ul className="space-y-3 text-sm text-gray-300">
                     <li className="flex items-center gap-2">
@@ -64,6 +65,10 @@ const ProfessionalPlan = () => {
                     <li className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
                         Swing Trading Models
+                    </li>
+                    <li className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
+                        Intra-Day Trading Models
                     </li>
                 </ul>
             </div>

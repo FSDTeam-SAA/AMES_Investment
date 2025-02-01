@@ -17,6 +17,8 @@ const BasicPlan = () => {
         <p className="text-white/90">$5 Per Month</p>
       </div>
       </div>
+      <div className="border-t border-[#FFFFFF]"/>
+
       <ul className="space-y-3 text-sm text-gray-300">
         <li className="flex items-center gap-2">
           <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
