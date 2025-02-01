@@ -13,6 +13,9 @@ const Dashboard = () => {
 
     return (
         <MainLayout>
+            <div>
+                <h1 className="text-9xl text-center text-white">DddB</h1>
+            </div>
             <div className="app bg-gray-400">
                 <Sidebar
                     activeItem={activeItem}
