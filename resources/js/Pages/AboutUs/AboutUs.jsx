@@ -22,7 +22,7 @@ const AboutUs = () => {
                     </div>
 
                     <div className="max-w-3xl mx-auto text-center space-y-6 mb-[56px]">
-                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium ">
+                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium text-[#FFFFFF]">
                             About Ames Investment Systems
                         </h1>
 
