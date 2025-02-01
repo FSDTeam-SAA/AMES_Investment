@@ -6,7 +6,7 @@ import basic from "../../../../public/img/pp-plus.png"
 
 const PlusPlan = () => {
     return (
-        <Card className="bg-zinc-900/50 border-zinc-800 p-6 rounded-xl relative before:absolute before:inset-0 before:bg-emerald-500/10 before:rounded-xl">
+        <Card className="bg-zinc-900/50 border-zinc-800 p-6 rounded-xl relative before:absolute before:inset-0">
             <div className="space-y-6 relative">
               <div className="flex flex-col items-center gap-6">
                 <div className="p-3 bg-[#161618] rounded-lg w-fit shadow-[inset_0px_7.4px_18.5px_0px_rgba(255,255,255,0.11)] border border-[#44444A]">
@@ -20,6 +20,7 @@ const PlusPlan = () => {
                     <p className="text-white/90">$20 Per Month</p>
                 </div>
                 </div>
+                <div className="border-t border-[#FFFFFF]"/>
                 <ul className="space-y-3 text-sm text-gray-300">
                     <li className="flex items-center gap-2">
                         <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
