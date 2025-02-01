@@ -10,7 +10,7 @@ export function NavBar() {
     const navItems = ["Home", "Features", "About us", "Contact"];
 
     return (
-        <header className="sticky top-0 z-50 max-w-[1440px] px-[10px] lg:px-[80px] py-[15px] mx-auto  bg-black">
+        <header className="sticky  top-0 z-50 max-w-[1440px] px-[10px] lg:px-[80px] py-[15px] mx-auto    bg-transparent backdrop-blur-lg">
             <div className="container flex h-16 items-center">
                 <div className="flex items-center space-x-2">
                     <Link href="/" className="flex items-center space-x-2">

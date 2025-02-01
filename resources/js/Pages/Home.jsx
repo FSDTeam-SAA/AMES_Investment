@@ -11,6 +11,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
             <Head title="Welcome" />
 
             <MainLayout>
+      
                 <HomeHero />
                 <FeaturesSection />
                 <HowItWorks />
