@@ -1,4 +1,4 @@
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import logo from "../../../public/img/logo.png";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -6,11 +6,11 @@ import { Menu, X } from "lucide-react";
 
 export function NavBar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    const navItems = ["Home", "Features", "About us", "Contact"];
+    const { auth } = usePage().props; // Accessing the authenticated user
+    
 
     return (
-        <header className="sticky  top-0 z-50 max-w-[1440px] px-[10px] py-[15px] mx-auto    bg-transparent backdrop-blur-lg">
+        <header className="sticky top-0 z-50 max-w-[1440px] px-[10px] py-[15px] mx-auto bg-transparent backdrop-blur-lg">
             <div className="container flex h-16 items-center">
                 <div className="flex items-center space-x-2">
                     <Link href="/" className="flex items-center space-x-2">
@@ -34,7 +34,7 @@ export function NavBar() {
                     {isMenuOpen ? (
                         <X className="h-6 w-6 text-black" />
                     ) : (
-                        <Menu className="h-6 w-6 text-whites" />
+                        <Menu className="h-6 w-6 text-white" />
                     )}
                     <span className="sr-only">Toggle menu</span>
                 </Button>
@@ -50,7 +50,6 @@ export function NavBar() {
                                 Home
                             </Link>
                         </li>
-
                         <li>
                             <Link
                                 href="/about-us"
@@ -80,16 +79,28 @@ export function NavBar() {
 
                 {/* Desktop Buttons */}
                 <div className="hidden md:flex md:items-center md:space-x-4">
-                    <Link
-                        href="login"
-                        variant="ghost"
-                        className="text-white bg-[#44444A] hover:text-white/80 border-0 py-[8px] px-[24px] rounded-[6px] shadow-[inset_0px_7.4px_18.5px_0px_rgba(255,255,255,0.11)] p-6 bg-gray-800"
-                    >
-                        Login
-                    </Link>
-                    <Button className="bg-gradient-to-t from-[#5350F2] to-[#5350F2] bg-gradient-to-r from-[#3FBC79] to-[#1B6DFA] hover:bg-emerald-600">
-                        Get Started
-                    </Button>
+                    {!auth.user ? (
+                        <>
+                            <Link
+                                href={route("login")}
+                                className="text-white bg-[#44444A] hover:text-white/80 border-0 py-[8px] px-[24px] rounded-[6px] shadow-[inset_0px_7.4px_18.5px_0px_rgba(255,255,255,0.11)] p-6 bg-gray-800"
+                            >
+                                Login
+                            </Link>
+                            <Button className="bg-gradient-to-r from-[#3FBC79] to-[#1B6DFA] hover:bg-emerald-600">
+                                Get Started
+                            </Button>
+                        </>
+                    ) : (
+                        <Link
+                            href={route("logout")}
+                            method="post"
+                            as="button"
+                            className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
+                        >
+                            Logout
+                        </Link>
+                    )}
                 </div>
 
                 {/* Mobile Navigation */}
@@ -104,7 +115,7 @@ export function NavBar() {
                                 Home
                             </Link>
                             <Link
-                                href="/"
+                                href="/features"
                                 className="text-[16px] font-medium text-white hover:text-white/80"
                                 onClick={() => setIsMenuOpen(false)}
                             >
@@ -115,26 +126,41 @@ export function NavBar() {
                                 className="text-[16px] font-medium text-white hover:text-white/80"
                                 onClick={() => setIsMenuOpen(false)}
                             >
-                                About us
+                                About Us
                             </Link>
                             <Link
-                                href="/"
+                                href="/contact"
                                 className="text-[16px] font-medium text-white hover:text-white/80"
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 Contact
                             </Link>
 
-                            <div className="flex flex-col space-y-2 pt-2 ">
-                                <Button
-                                    variant="ghost"
-                                    className="text-white hover:text-white/80 hover:text-black "
-                                >
-                                    Login
-                                </Button>
-                                <Button className="bg-gradient-to-t from-[#5350F2] to-[#5350F2] bg-gradient-to-r from-[#3FBC79] to-[#1B6DFA] hover:bg-emerald-600">
-                                    Get Started
-                                </Button>
+                            <div className="flex flex-col space-y-2 pt-2">
+                                {!auth.user ? (
+                                    <>
+                                        <Link
+                                            href={route("login")}
+                                            className="text-white bg-[#44444A] hover:text-white/80 border-0 py-2 px-4 rounded bg-gray-800 text-center"
+                                            onClick={() => setIsMenuOpen(false)}
+                                        >
+                                            Login
+                                        </Link>
+                                        <Button className="bg-gradient-to-r from-[#3FBC79] to-[#1B6DFA] hover:bg-emerald-600">
+                                            Get Started
+                                        </Button>
+                                    </>
+                                ) : (
+                                    <Link
+                                        href={route("logout")}
+                                        method="post"
+                                        as="button"
+                                        className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded text-center"
+                                        onClick={() => setIsMenuOpen(false)}
+                                    >
+                                        Logout
+                                    </Link>
+                                )}
                             </div>
                         </nav>
                     </div>

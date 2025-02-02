@@ -1,9 +1,14 @@
+import { usePage } from "@inertiajs/react";
+
 import React, { useState, useEffect } from "react";
 import { PositionsTable } from "./PositionTable";
-import { getPositions, getPortfolioHistory } from "../AlpacaDataFetch"; 
+import { getPositions, getPortfolioHistory } from "../AlpacaDataFetch";
 import { PortfolioChart } from "./PortfolioChart";
 
 const DashboardHome = () => {
+    const { auth } = usePage().props;
+    console.log("dashboard", auth.user.api_key);
+
     const [positions, setPositions] = useState([]);
     const [history, setHistory] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -34,7 +39,7 @@ const DashboardHome = () => {
 
     return (
         <div>
-            <PortfolioChart data={history}/>
+            <PortfolioChart data={history} />
             <PositionsTable positions={positions} />
         </div>
     );

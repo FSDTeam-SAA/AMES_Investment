@@ -9,33 +9,36 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var list<string>
+     * @var array<string>
      */
     protected $fillable = [
-        'name',
+        'name',    // Added for full name
         'email',
+        'phone_number', // Added for phone number
         'password',
-        // 'google_id',  
+        'terms_accepted', // Added to track if terms were accepted
+        'api_key',      // Added API key
+        'secret_key',   // Added secret key
     ];
 
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var list<string>
+     * @var array<string>
      */
     protected $hidden = [
         'password',
         'remember_token',
+        // 'secret_key', // Hide secret key from responses
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * The attributes that should be cast.
      *
      * @return array<string, string>
      */
@@ -44,6 +47,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'terms_accepted' => 'boolean', // Cast to boolean
         ];
     }
 }
