@@ -10,7 +10,7 @@ export function NavBar() {
     
 
     return (
-        <header className="sticky top-0 z-50 max-w-[1440px] px-[10px] py-[15px] mx-auto bg-transparent backdrop-blur-lg">
+        <header className="sticky  top-0 z-50 max-w-full px-[10px] py-[15px] mx-auto    bg-transparent backdrop-blur-lg">
             <div className="container flex h-16 items-center">
                 <div className="flex items-center space-x-2">
                     <Link href="/" className="flex items-center space-x-2">
