@@ -10,7 +10,7 @@ export function NavBar() {
     const navItems = ["Home", "Features", "About us", "Contact"];
 
     return (
-        <header className="sticky  top-0 z-50 max-w-[1440px] px-[10px] py-[15px] mx-auto    bg-transparent backdrop-blur-lg">
+        <header className="sticky  top-0 z-50 max-w-full px-[10px] py-[15px] mx-auto    bg-transparent backdrop-blur-lg">
             <div className="container flex h-16 items-center">
                 <div className="flex items-center space-x-2">
                     <Link href="/" className="flex items-center space-x-2">
@@ -83,7 +83,7 @@ export function NavBar() {
                     <Link
                         href="login"
                         variant="ghost"
-                        className="text-white bg-[#44444A] hover:text-white/80 border-0 py-[8px] px-[24px] rounded-[6px] shadow-[inset_0px_7.4px_18.5px_0px_rgba(255,255,255,0.11)] p-6 bg-gray-800"
+                        className="text-white  hover:text-white/80 border-0 py-[8px] px-[24px] rounded-[6px] shadow-[inset_0px_7.4px_18.5px_0px_rgba(255,255,255,0.11)] p-6 bg-gray-800"
                     >
                         Login
                     </Link>

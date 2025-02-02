@@ -1,10 +1,11 @@
-import PortfolioDashboard from "./DashboadHeader";
+import DashboadHeader from "./DashboadHeader";
+import DashboardHome from "./Home/DashboardHome";
 
 const Content = ({ activeItem }) => {
     const renderContent = () => {
         switch (activeItem) {
             case "home":
-                return <DashboardHome />
+                return <DashboardHome />;
             case "about":
                 return <h2>About Us</h2>;
             case "services":
@@ -18,11 +19,12 @@ const Content = ({ activeItem }) => {
 
     return (
         <div className="content bg-black  text-white">
-            <PortfolioDashboard
+            <DashboadHeader
                 portfolioValue={227169.85}
                 growth={25.2}
-                riskLevel="High"
+                riskLevel="Low"
                 status="Not Ready"
+                overallGrowth={2575065}
             />
             {renderContent()}
         </div>

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { router } from "@inertiajs/react";
-
+import bgLines from "../../../../public/img/BgLines.png";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -65,7 +65,7 @@ export default function ContactPage() {
 
     return (
         <MainLayout>
-            <div className=" w-full bg-gradient-to-br from-black to-slate-900 relative overflow-hidden">
+            <div className=" w-full  relative overflow-hidden">
                 {/* <div
         className="absolute inset-0 w-full h-full opacity-30"
         style={{
@@ -74,10 +74,10 @@ export default function ContactPage() {
         }}
       /> */}
 
-                <div className=" mx-auto px-4 py-12">
-                    <div className="grid lg:grid-cols-2 gap-12 items-start">
+                <div className=" mx-auto px-4 py-12   min-h-screen ">
+                    <div className="grid  lg:grid-cols-2 gap-12 items-start">
                         <ExternalButtons />
-                        <div className="bg-gray-900/50 backdrop-blur-sm rounded-lg p-6 space-y-6">
+                        <div className="bg-[#161618]  max-w-[619px]   backdrop-blur-sm rounded-lg p-6 space-y-6">
                             <h2 className="text-2xl font-bold text-white mb-8">
                                 Contact Us
                             </h2>
@@ -142,7 +142,7 @@ export default function ContactPage() {
                                 <Button
                                     type="submit"
                                     disabled={isLoading}
-                                    className="w-full"
+                                    className="w-full bg-gradient-to-t from-[#5350F2] to-[#5350F2] bg-gradient-to-r from-[#3FBC79] to-[#1B6DFA] hover:bg-emerald-600"
                                 >
                                     {isLoading ? "Submitting..." : "Submit"}
                                 </Button>
