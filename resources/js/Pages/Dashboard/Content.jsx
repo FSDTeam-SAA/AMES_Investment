@@ -1,4 +1,5 @@
 import PortfolioDashboard from "./DashboadHeader";
+import DashboardHome from "./Home/DashboardHome";
 
 const Content = ({ activeItem }) => {
     const renderContent = () => {
