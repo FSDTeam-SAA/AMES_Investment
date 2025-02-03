@@ -12,6 +12,8 @@ import {
     Settings,
     Info,
 } from "lucide-react";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import DashboadHeader from "../DashboadHeader";
 import TradingTable from "../TradingTable";
 import Investment from "../Investment/Investment";
@@ -46,7 +48,6 @@ export default function DashboardLayoutAndContent() {
                             overallGrowth={2575065}
                         />
                         <DashboardHome />
-
                     </>
                 );
             case "Investments":
@@ -195,6 +196,27 @@ export default function DashboardLayoutAndContent() {
                                     </span>
                                 </button>
                             ))}
+
+                            {/* profile card  */}
+                            <CardHeader className="bg-[#2C2C30] my-2 p-2 rounded-[7px]">
+                                <div className="flex items-center space-x-4">
+                                    <Avatar className="h-[24px] w-[24px]">
+                                        <AvatarImage
+                                            src="/placeholder-user.jpg"
+                                            alt="@shadcn"
+                                        />
+                                        <AvatarFallback>u</AvatarFallback>
+                                    </Avatar>
+                                    <div className="space-y-1">
+                                        <h4 className="text-[14px] font-semibold">
+                                            User
+                                        </h4>
+                                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                                            user@example.com
+                                        </p>
+                                    </div>
+                                </div>
+                            </CardHeader>
                         </div>
                     </div>
                 </nav>

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { PositionsTable } from "./PositionTable";
 import { getPositions, getPortfolioHistory } from "../AlpacaDataFetch";
 import { PortfolioChart } from "./PortfolioChart";
+import DashboardChange from "./DashboardChange";
 
 const DashboardHome = () => {
     const { auth } = usePage().props;
@@ -45,6 +46,7 @@ const DashboardHome = () => {
             <div className="w-[80%]">
                 <PositionsTable positions={positions} />
             </div>
+            <DashboardChange />
         </div>
     );
 };
