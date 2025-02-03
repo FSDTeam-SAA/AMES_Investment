@@ -18,6 +18,7 @@ import DashboadHeader from "../DashboadHeader";
 import TradingTable from "../TradingTable";
 import Investment from "../Investment/Investment";
 import DashboardHome from "./DashboardHome";
+import MarketInsightWidget from "../Market-Insight/MarketInsightWidget";
 
 export default function DashboardLayoutAndContent() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -81,7 +82,9 @@ export default function DashboardLayoutAndContent() {
                 return (
                     <div>
                         <DashboadHeader />
-                        Market Insightssssss
+                        <div className="h-[400px] w-full mt-5 rounded-[20px] overflow-hidden">
+                            <MarketInsightWidget />
+                        </div>
                     </div>
                 );
             case "Settings":

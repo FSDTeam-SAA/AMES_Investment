@@ -7,7 +7,19 @@ const HomeHero = () => {
     return (
         <div>
             <section>
-                <div className="brackdrop-blur gradient-bg min-h-[600px] w-full flex flex-col items-center justify-center lg:pt-[120px] px-4 py-16 bg-gradient-to-b from-gray-950 to-teal-950/30 relative ">
+                <div className=" min-h-[600px] w-full flex flex-col items-center justify-center lg:pt-[120px] px-4 py-16 bg-gradient-to-b from-gray-950 to-teal-950/30 relative ">
+                    <div
+                        className="absolute inset-0 w-[20%] mx-auto translate-y-[-50px]"
+                        style={{
+                            background: `radial-gradient(circle at top, 
+        rgba(84, 255, 170, 0.3) 0%, 
+        rgba(38, 239, 121, 0.2) 30%, 
+        rgba(0, 0, 0, 0.8) 80%)`,
+                            filter: "blur(80px)",
+                            WebkitFilter: "blur(80px)",
+                        }}
+                    />
+
                     <div className="max-w-3xl mx-auto text-center space-y-6 mb-[56px]">
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium text-white">
                             Unlock Smarter Investments with Cutting-Edge AI
@@ -21,7 +33,7 @@ const HomeHero = () => {
                         </p>
 
                         <div className="hidden md:flex md:items-center justify-center md:space-x-4">
-                            <Button className="bg-gradient-to-t from-[#5350F2] to-[#5350F2] bg-gradient-to-r from-[#3FBC79] to-[#1B6DFA] hover:bg-emerald-600">
+                            <Button >
                                 Get Started
                             </Button>
                             <Link
