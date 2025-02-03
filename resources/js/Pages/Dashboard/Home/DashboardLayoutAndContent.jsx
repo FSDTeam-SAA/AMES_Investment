@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { IdCard } from "lucide-react";
 import logo from "../../../../../public/img/logo.png";
 import {
     LayoutDashboard,
@@ -12,6 +13,8 @@ import {
     Info,
 } from "lucide-react";
 import DashboadHeader from "../DashboadHeader";
+import TradingTable from "../TradingTable";
+import Investment from "../Investment/Investment";
 
 export default function DashboardLayoutAndContent() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -45,33 +48,45 @@ export default function DashboardLayoutAndContent() {
                 );
             case "Investments":
                 return (
-                    <h2 className="text-2xl text-white font-bold">
+                    <div>
+                        <DashboadHeader />
                         Your Calendar
-                    </h2>
+                        <Investment />
+                    </div>
                 );
             case "Transaction":
                 return (
-                    <h2 className="text-2xl text-white font-bold">
-                        Transaction List
-                    </h2>
+                    <div className="gradient-bg">
+                        <DashboadHeader
+                            portfolioValue={565}
+                            growth={2535.2}
+                            riskLevel="Moderate"
+                            status="Running"
+                            overallGrowth={2575065}
+                        />
+                        <TradingTable />
+                    </div>
                 );
             case "Market Insights":
                 return (
-                    <h2 className="text-2xl text-white font-bold">
+                    <div>
+                        <DashboadHeader />
                         Market Insightssssss
-                    </h2>
+                    </div>
                 );
             case "Settings":
                 return (
-                    <h2 className="text-2xl text-white font-bold">
+                    <div>
+                        <DashboadHeader />
                         Settings Panel
-                    </h2>
+                    </div>
                 );
             case "Help & Center":
                 return (
-                    <h2 className="text-2xl text-white font-bold">
+                    <h>
+                        <DashboadHeader />
                         Help HElp HElp HElp
-                    </h2>
+                    </h>
                 );
             default:
                 return (
@@ -112,8 +127,9 @@ export default function DashboardLayoutAndContent() {
                     </Button>
                 </div>
 
-                <nav className="flex-1     space-y-2 px-2 py-4    ">
-                    <div className="flex flex-col justify-between h-full">
+                <nav className="flex-1    max-h-[600px]  space-y-2 px-2 py-4    ">
+                    <div className="flex  flex-col justify-between h-full">
+                        {/* top menu  */}
                         <div>
                             {menuItems.map((item) => (
                                 <button
@@ -142,7 +158,7 @@ export default function DashboardLayoutAndContent() {
                                 </button>
                             ))}
                         </div>
-
+                        {/* dawon menu  */}
                         <div>
                             {menuItems2.map((item) => (
                                 <button
@@ -178,11 +194,15 @@ export default function DashboardLayoutAndContent() {
                 <header className="flex h-16 items-center justify-between  bg-transparent border border-gray-800 rounded-t-[20px] text-white px-6 dark:border-gray-800 dark:bg-gray-800">
                     <h1 className="text-lg font-semibold"> Hello, User</h1>
                     <div className="flex items-center gap-4">
-                        <Button variant="ghost" size="icon">
+                        {/* <Button variant="ghost" size="icon">
                             <SearchIcon className="h-5 w-5" />
                             <span className="sr-only">Search</span>
-                        </Button>
-                        <Button variant="ghost" size="icon">
+                        </Button>  */}
+                        <button className="text-white flex hover:text-white/80 border-0 py-[8px] px-[24px] rounded-[6px] shadow-[inset_0px_7.4px_18.5px_0px_rgba(255,255,255,0.11)] p-6 bg-gray-800">
+                            <IdCard className="mr-2" />
+                            AIS #: ABC2041123
+                        </button>
+                        {/* <Button variant="ghost" size="icon">
                             <img
                                 src="/placeholder.svg"
                                 width="32"
@@ -195,7 +215,7 @@ export default function DashboardLayoutAndContent() {
                                 }}
                             />
                             <span className="sr-only">User menu</span>
-                        </Button>
+                        </Button> */}
                     </div>
                 </header>
                 <main className="flex-1 border  border-gray-800 overflow-y-auto p-6">
