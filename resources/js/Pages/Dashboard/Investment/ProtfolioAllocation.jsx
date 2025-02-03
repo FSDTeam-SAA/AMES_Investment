@@ -47,7 +47,7 @@ export default function ProtfolioAllocation() {
     const data = usePortfolioData();
 
     return (
-        <Card className="w-full max-w-[550px] border-gray-800 bg-transparent">
+        <Card className="w-full max-w-[500px] border-gray-800 bg-transparent">
             <CardHeader>
                 <CardTitle className="text-center text-white">
                     Portfolio Allocation
@@ -72,7 +72,8 @@ export default function ProtfolioAllocation() {
                                     midAngle,
                                     innerRadius,
                                     outerRadius,
-                                    value,
+                                    percent,
+                                    index,
                                 }) => {
                                     const RADIAN = Math.PI / 180;
                                     const radius =
@@ -89,14 +90,12 @@ export default function ProtfolioAllocation() {
                                         <text
                                             x={x}
                                             y={y}
-                                            fill="white"
-                                            textAnchor={
-                                                x > cx ? "start" : "end"
-                                            }
+                                            fill="#000000"
+                                            textAnchor="middle"
                                             dominantBaseline="central"
-                                            className="text-xs  font-medium"
+                                            className="text-xs font-bold"
                                         >
-                                            {`${value.toFixed(1)}%`}
+                                            {`${(percent * 100).toFixed(1)}%`}
                                         </text>
                                     );
                                 }}

@@ -1,13 +1,16 @@
 import React from "react";
 import TrendChart from "./TrendChart";
 import ProtfolioAllocation from "./ProtfolioAllocation";
+import InvestmentChanges from "./InvestmentChanges";
 
 const Investment = () => {
     return (
-        <div className="flex gap-5">
-            <h1></h1>
-            <TrendChart />
-            <ProtfolioAllocation />
+        <div>
+            <InvestmentChanges />
+            <div className="flex gap-5">
+                <TrendChart />
+                <ProtfolioAllocation />
+            </div>
         </div>
     );
 };
