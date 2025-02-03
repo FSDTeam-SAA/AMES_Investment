@@ -39,8 +39,12 @@ const DashboardHome = () => {
 
     return (
         <div>
-            <PortfolioChart data={history} />
-            <PositionsTable positions={positions} />
+            <div className="w-[80%]">
+                <PortfolioChart data={history} />
+            </div>
+            <div className="w-[80%]">
+                <PositionsTable positions={positions} />
+            </div>
         </div>
     );
 };

@@ -15,6 +15,7 @@ import {
 import DashboadHeader from "../DashboadHeader";
 import TradingTable from "../TradingTable";
 import Investment from "../Investment/Investment";
+import DashboardHome from "./DashboardHome";
 
 export default function DashboardLayoutAndContent() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -44,6 +45,8 @@ export default function DashboardLayoutAndContent() {
                             status="Not Ready"
                             overallGrowth={2575065}
                         />
+                        <DashboardHome />
+
                     </>
                 );
             case "Investments":
