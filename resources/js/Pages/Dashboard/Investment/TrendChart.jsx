@@ -51,13 +51,6 @@ export default function TrendChart() {
             <CardHeader className="pb-4">
                 <CardTitle className="text-lg font-medium text-center  ">
                     Portfolio Trend{" "}
-                    <span
-                        className="text-red-400
-                    
-                    "
-                    >
-                        (Have Issue)
-                    </span>
                 </CardTitle>
             </CardHeader>
             <CardContent>

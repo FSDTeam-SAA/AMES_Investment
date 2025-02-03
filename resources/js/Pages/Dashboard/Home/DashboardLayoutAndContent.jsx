@@ -49,8 +49,14 @@ export default function DashboardLayoutAndContent() {
             case "Investments":
                 return (
                     <div>
-                        <DashboadHeader />
-                        Your Calendar
+                        <DashboadHeader
+                            portfolioValue={55565}
+                            growth={2455.2}
+                            riskLevel="Moderate"
+                            status="Running"
+                            overallGrowth={2575065}
+                        />
+
                         <Investment />
                     </div>
                 );
