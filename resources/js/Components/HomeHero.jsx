@@ -7,7 +7,7 @@ const HomeHero = () => {
     return (
         <div>
             <section>
-                <div className=" min-h-[600px] w-full flex flex-col items-center justify-center lg:pt-[120px] px-4 py-16 bg-gradient-to-b from-gray-950 to-teal-950/30 relative ">
+                <div className=" min-h-[600px] w-full flex flex-col items-center justify-center lg:pt-[120px] px-4 py-16  relative ">
                     <div
                         className="absolute inset-0 w-[20%] mx-auto translate-y-[-50px]"
                         style={{
@@ -33,9 +33,7 @@ const HomeHero = () => {
                         </p>
 
                         <div className="hidden md:flex md:items-center justify-center md:space-x-4">
-                            <Button >
-                                Get Started
-                            </Button>
+                            <Button>Get Started</Button>
                             <Link
                                 href="#s"
                                 variant="ghost"
