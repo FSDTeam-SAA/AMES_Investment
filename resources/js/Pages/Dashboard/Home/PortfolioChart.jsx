@@ -27,7 +27,7 @@ export function PortfolioChart({ data }) {
     };
 
     return (
-        <Card className="bg-[#2C2F38] border-gray-800 mt-5 mb-5">
+        <Card className="bg-[#2C2F38] border-gray-800 mt-5 mb-5 ">
             <CardHeader>
                 <CardTitle className="text-white text-[15px] ml-[80px]">
                     <div className="bg-green-500 w-[25px] h-[5px] inline-block mr-[5px] rounded-[1px]" />

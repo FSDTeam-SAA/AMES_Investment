@@ -101,8 +101,8 @@ export default function TradingTable() {
         <div className="p-4 my-5 bg-[#0B1218] w-[500px] text-gray-100 rounded-[19px]">
             <Table>
                 <TableHeader>
-                    <TableRow className="border-gray-800 hover:bg-gray-700">
-                        <TableHead className="text-gray-400">Symbol</TableHead>
+                    <TableRow className="border-gray-800 hover:bg-gray-700 ">
+                        <TableHead className="text-gray-400 !bg-black">Symbol</TableHead>
                         <TableHead className="text-gray-400">
                             Open Timestamp
                         </TableHead>

@@ -7,21 +7,30 @@ import dashboard from "../../../../public/img/Dashboad.png";
 import MissionAndValue from "./MissionAndValue";
 import GetStartedCard from "@/Components/GetStartedCard";
 
+import bgLines from "../../../../public/img/BgLines.png";
+import vector2 from "../../../../public/img//Vector 2.png";
+
 const AboutUs = () => {
     return (
         <MainLayout>
             <section>
-                <div className="min-h-[600px] w-full flex flex-col items-center justify-center px-4 py-16 bg-gradient-to-b from-gray-950 to-teal-950/30 relative">
-                    <div className=" mb-5">
-                        <Button
-                            variant="ghost"
-                            className="hover:bg-transparent "
-                        >
-                            About Us →
-                        </Button>
+                <div className="min-h-[600px] w-full flex flex-col items-center justify-center px-4 py-16  from-gray-950 to-teal-950/30 relative">
+                    {/* gradient-bg-lighting */}
+                    <div className="absolute top-0 ">
+                        <div className="flex justify-center items-center  blur-[130px]">
+                            <img src={vector2} alt="vector2" />
+                        </div>
+                        {/* bg-bars */}
+                        <div className="absolute inset-0 w-[80%] mx-auto h-[40%] z-0 opacity-80">
+                            <img
+                                src={bgLines}
+                                alt=""
+                                className="w-full h-full "
+                            />
+                        </div>
                     </div>
 
-                    <div className="max-w-3xl mx-auto text-center space-y-6 mb-[56px]">
+                    <div className="max-w-3xl mx-auto text-center space-y-6 mb-[56px] z-10 mt-[60px]">
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium text-[#FFFFFF]">
                             About Ames Investment Systems
                         </h1>

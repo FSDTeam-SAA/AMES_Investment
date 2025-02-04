@@ -7,7 +7,7 @@ const PlusPlan = () => {
     return (
         <Card
             className="bg-zinc-900/50  max-h-[598px]
-        0px] border-zinc-800 p-6 rounded-xl relative before:absolute before:inset-0"
+        0px] border-zinc-800 p-6 rounded-xl relative before:absolute before:inset-0 z-10"
         >
             <div className="space-y-6 relative">
                 <div className="flex flex-col items-center gap-6">

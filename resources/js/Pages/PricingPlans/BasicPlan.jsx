@@ -5,7 +5,7 @@ import React from "react";
 
 const BasicPlan = () => {
     return (
-        <Card className="bg-zinc-900/50 max-h-[520px] border-zinc-800 p-6 rounded-xl">
+        <Card className="bg-zinc-900/50 max-h-[520px] border-zinc-800 p-6 rounded-xl z-10">
             <div className="space-y-6">
                 <div className="flex flex-col items-center gap-6">
                     <div className="p-3 bg-[#161618] rounded-lg w-fit shadow-[inset_0px_7.4px_18.5px_0px_rgba(255,255,255,0.11)] border border-[#44444A]">

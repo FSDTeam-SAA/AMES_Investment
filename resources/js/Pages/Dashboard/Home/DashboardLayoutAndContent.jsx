@@ -2,6 +2,9 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { IdCard } from "lucide-react";
 import logo from "../../../../../public/img/logo.png";
+import bgLines from "../../../../../public/img/BgLines.png";
+import vector2 from "../../../../../public/img/Vector 2.png";
+
 import {
     LayoutDashboard,
     CalendarIcon,
@@ -41,6 +44,7 @@ export default function DashboardLayoutAndContent() {
             case "Dashboard":
                 return (
                     <>
+                    
                         <DashboadHeader
                             portfolioValue={565}
                             growth={25.2}
@@ -112,6 +116,7 @@ export default function DashboardLayoutAndContent() {
 
     return (
         <div className="grid min-h-[682px] mt-[60px] border border-gray-800 rounded-t-lg p-5 w-full grid-cols-[auto_1fr] overflow-hidden">
+            
             <div
                 className={`flex flex-col bg-transparent   text-white dark:bg-gray-800 transition-all duration-300 ${
                     isSidebarOpen ? "w-64" : "w-16"
@@ -140,7 +145,7 @@ export default function DashboardLayoutAndContent() {
                     </Button>
                 </div>
 
-                <nav className="flex-1    max-h-[600px]  space-y-2 px-2 py-4    ">
+                <nav className="flex-1    max-h-[600px]  space-y-2 px-2 py-4  z-50  ">
                     <div className="flex  flex-col justify-between h-full">
                         {/* top menu  */}
                         <div>
@@ -252,7 +257,8 @@ export default function DashboardLayoutAndContent() {
                         </Button> */}
                     </div>
                 </header>
-                <main className="flex-1 border  border-gray-800 overflow-y-auto p-6">
+                <main className="flex-1 border  border-gray-800 overflow-y-auto p-6 ">
+                
                     {renderContent()}
                 </main>
             </div>

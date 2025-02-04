@@ -10,19 +10,19 @@ export function NavBar() {
     
 
     return (
-        <header className="sticky  top-0 z-50 max-w-full px-[10px] py-[15px] mx-auto    bg-transparent backdrop-blur-lg">
-            <div className="container flex h-16 items-center">
-                <div className="flex items-center space-x-2">
-                    <Link href="/" className="flex items-center space-x-2">
+        <header className="sticky  top-0 z-50  py-[15px]  bg-transparent backdrop-blur-lg">
+            <div className="max-w-[1450px] mx-auto flex h-16 items-center">
+                <div>
+                    <Link href="/" className="flex items-center ">
                         <img
                             src={logo}
                             alt="AMES Investment Logo"
-                            className="h-[42px] w-[42px]"
+                            className=""
                         />
                     </Link>
-                    <h1 className="text-lg lg:text-[24px] text-white font-extrabold">
+                    {/* <h1 className="text-lg lg:text-[24px] text-white font-extrabold">
                         Ames Investment Systems
-                    </h1>
+                    </h1> */}
                 </div>
 
                 {/* Mobile Menu Button */}
