@@ -39,14 +39,17 @@ const HomeHero = () => {
                         </p>
 
                         <div className="hidden md:flex md:items-center justify-center md:space-x-4">
-                            <Button>Get Started</Button>
-                            <Link
-                                href="#s"
-                                variant="ghost"
-                                className="text-white bg-[#44444A] hover:text-white/80 border-0 py-[8px] px-[24px] rounded-[6px] shadow-[inset_0px_7.4px_18.5px_0px_rgba(255,255,255,0.11)] p-6 bg-gray-800"
+                            <Link href={route("register")}>
+                                <Button className="px-[24px] w-[124px]">
+                                    Sign Up
+                                </Button>
+                            </Link>
+                            <Button
+                                variant="secondary"
+                                className="text-white bg-[#161618] hover:text-white/80 border-0 py-[8px] px-[24px] rounded-[6px] shadow-[inset_0px_7.4px_18.5px_0px_rgba(255,255,255,0.11)] "
                             >
                                 Learn More
-                            </Link>
+                            </Button>
                         </div>
                     </div>
                     <div>

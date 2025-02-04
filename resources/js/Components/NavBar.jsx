@@ -7,11 +7,10 @@ import { Menu, X } from "lucide-react";
 export function NavBar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { auth } = usePage().props; // Accessing the authenticated user
-    
 
     return (
         <header className="sticky  top-0 z-50  py-[15px]  bg-transparent backdrop-blur-lg">
-            <div className="max-w-[1450px] mx-auto flex h-16 items-center">
+            <div className="max-w-[1490px] mx-auto flex h-16 items-center   ">
                 <div>
                     <Link href="/" className="flex items-center ">
                         <img
@@ -40,7 +39,7 @@ export function NavBar() {
                 </Button>
 
                 {/* Desktop Navigation */}
-                <nav className="hidden md:flex md:flex-1 md:items-center md:justify-center">
+                <nav className="hidden md:flex md:flex-1 md:items-center md:justify-center ml-[-10%] ">
                     <ul className="flex space-x-8">
                         <li>
                             <Link
@@ -48,6 +47,14 @@ export function NavBar() {
                                 className="text-[16px] font-medium text-white hover:text-white/80"
                             >
                                 Home
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                href="/pricing-plans"
+                                className="text-[16px] font-medium text-white hover:text-white/80"
+                            >
+                                Pricing
                             </Link>
                         </li>
                         <li>
@@ -63,15 +70,7 @@ export function NavBar() {
                                 href="/contact"
                                 className="text-[16px] font-medium text-white hover:text-white/80"
                             >
-                                Contacts
-                            </Link>
-                        </li>
-                        <li>
-                            <Link
-                                href="/pricing-plans"
-                                className="text-[16px] font-medium text-white hover:text-white/80"
-                            >
-                                Pricing
+                                Contact
                             </Link>
                         </li>
                     </ul>
@@ -87,9 +86,9 @@ export function NavBar() {
                             >
                                 Login
                             </Link>
-                            <Button className="bg-gradient-to-r from-[#3FBC79] to-[#1B6DFA] hover:bg-emerald-600">
-                                Get Started
-                            </Button>
+                            <Link href={route("register")}>
+                                <Button>Sign Up</Button>
+                            </Link>
                         </>
                     ) : (
                         <Link

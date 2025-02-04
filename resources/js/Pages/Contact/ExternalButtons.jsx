@@ -18,13 +18,13 @@ const ExternalButtons = () => {
                 <Button variant="ghost">
                     <img src={msgIcon} alt="message" /> Schedule a Meeting
                 </Button>
-                <Button  variant="ghost">
+                <Button variant="ghost">
                     <img src={msgIcon} alt="message" /> Join our Discord
                 </Button>
-                <Button  variant="ghost">
+                <Button variant="ghost">
                     <img src={msgIcon} alt="message" /> Visit our FAQ
                 </Button>
-                <Button  variant="ghost">
+                <Button variant="ghost">
                     <img src={msgIcon} alt="message" /> Talk To Our Chat Bot
                 </Button>
             </div>

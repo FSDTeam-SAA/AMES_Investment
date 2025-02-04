@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import bgLines from "../../../public/img/BgLines.png";
 
-const GetStartedCard = ({ title }) => {
+const GetStartedCard = ({ title, buttonText = "Sign Up Now" }) => {
     return (
-        <div className="flex items-center justify-center p-6 ">
+        <div className="flex items-center justify-center p-6 md:my-[60px] ">
             <div
                 className="w-full max-w-6xl rounded-[2rem] p-16 relative overflow-hidden"
                 style={{
@@ -44,10 +44,11 @@ const GetStartedCard = ({ title }) => {
 
                     <div className="mt-12">
                         <Button
+                            variant="secondary"
                             size="lg"
                             className="bg-zinc-900 hover:bg-zinc-800 text-white rounded-lg px-8 py-6 text-lg"
                         >
-                            Sign Up Now
+                            {buttonText}
                         </Button>
                     </div>
                 </div>

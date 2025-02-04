@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { IdCard } from "lucide-react";
-import logo from "../../../../../public/img/logo.png";
-import bgLines from "../../../../../public/img/BgLines.png";
-import vector2 from "../../../../../public/img/Vector 2.png";
+import { ChevronRightIcon, IdCard } from "lucide-react";
+import dashboardlogo from "../../../../../public/img/dashboardlogo.png";
 
 import {
     LayoutDashboard,
@@ -11,7 +9,6 @@ import {
     ArrowLeftRight,
     UsersIcon,
     ChevronLeftIcon,
-    SearchIcon,
     Settings,
     Info,
 } from "lucide-react";
@@ -44,7 +41,6 @@ export default function DashboardLayoutAndContent() {
             case "Dashboard":
                 return (
                     <>
-                    
                         <DashboadHeader
                             portfolioValue={565}
                             growth={25.2}
@@ -63,7 +59,7 @@ export default function DashboardLayoutAndContent() {
                             growth={2455.2}
                             riskLevel="Moderate"
                             status="Running"
-                            overallGrowth={2575065}
+                            overallGrowth={25065}
                         />
 
                         <Investment />
@@ -77,7 +73,7 @@ export default function DashboardLayoutAndContent() {
                             growth={2535.2}
                             riskLevel="Moderate"
                             status="Running"
-                            overallGrowth={2575065}
+                            overallGrowth={5065}
                         />
                         <TradingTable />
                     </div>
@@ -116,7 +112,6 @@ export default function DashboardLayoutAndContent() {
 
     return (
         <div className="grid min-h-[682px] mt-[60px] border border-gray-800 rounded-t-lg p-5 w-full grid-cols-[auto_1fr] overflow-hidden">
-            
             <div
                 className={`flex flex-col bg-transparent   text-white dark:bg-gray-800 transition-all duration-300 ${
                     isSidebarOpen ? "w-64" : "w-16"
@@ -125,9 +120,9 @@ export default function DashboardLayoutAndContent() {
                 <div className="flex h-16 items-center justify-between px-4">
                     <div className="flex items-center gap-2 font-semibold">
                         <img
-                            src={logo}
+                            src={dashboardlogo}
                             alt="AMES Investment Logo"
-                            className="h-[42px] w-[42px]"
+                            className="h-6 w-6"
                         />
                         <span
                             className={`${isSidebarOpen ? "block" : "hidden"}`}
@@ -135,14 +130,19 @@ export default function DashboardLayoutAndContent() {
                             AMES Investment
                         </span>
                     </div>
-                    <Button
-                        variant="ghost"
+                    <button
+                        // variant="ghost"
                         size="icon"
                         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
                     >
-                        <ChevronLeftIcon className="h-5 w-5" />
+                        {isSidebarOpen ? (
+                            <ChevronLeftIcon className="h-5 w-5" />
+                        ) : (
+                            <ChevronRightIcon className="h-5 w-5" />
+                        )}
+
                         <span className="sr-only">Toggle sidebar</span>
-                    </Button>
+                    </button>
                 </div>
 
                 <nav className="flex-1    max-h-[600px]  space-y-2 px-2 py-4  z-50  ">
@@ -215,7 +215,12 @@ export default function DashboardLayoutAndContent() {
                                         />
                                         <AvatarFallback>u</AvatarFallback>
                                     </Avatar>
-                                    <div className="space-y-1">
+                                    <div
+                                        // className="space-y-1 "
+                                        className={`space-y-1 ${
+                                            isSidebarOpen ? "block" : "hidden"
+                                        }`}
+                                    >
                                         <h4 className="text-[14px] font-semibold">
                                             User
                                         </h4>
@@ -258,7 +263,6 @@ export default function DashboardLayoutAndContent() {
                     </div>
                 </header>
                 <main className="flex-1 border  border-gray-800 overflow-y-auto p-6 ">
-                
                     {renderContent()}
                 </main>
             </div>

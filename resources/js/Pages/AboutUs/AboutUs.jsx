@@ -57,15 +57,16 @@ const AboutUs = () => {
                     </div>
                 </div>
             </section>
-            <section className="flex flex-wrap w-full justify-center items-center md:flex-row flex-col mb-[40px] lg:mb-[80px] mt-[40px] lg:mt-[80px]">
-                <div className="w-full md:w-1/2 flex justify-center">
+
+            <section className="flex flex-wrap max-w-[1490px] mx-auto justify-center items-center md:flex-row flex-col mb-[40px] lg:mb-[80px] mt-[40px] lg:mt-[80px]">
+                <div className="w-full md:w-1/2 flex justify-start">
                     <img
                         src={img}
                         alt="our-journey"
                         className="w-full max-w-[500px]"
                     />
                 </div>
-                <div className="w-full md:w-1/2 p-4 md:p-8 text-center md:text-left">
+                <div className="w-full md:w-[570px] p-4 md:p-8 text-center md:text-left">
                     <h2 className="text-[24px] leading-[36px] text-white">
                         Our Journey
                     </h2>
@@ -80,12 +81,14 @@ const AboutUs = () => {
                     </p>
                 </div>
             </section>
-            <section className="flex flex-wrap w-full justify-center items-center md:flex-row flex-col-reverse">
-                <div className="w-full md:w-1/2 p-4 md:p-8 text-center md:text-left">
+
+            {/* Our Story */}
+            <section className="flex flex-wrap max-w-[1490px] mx-auto justify-center items-center md:flex-row flex-col-reverse">
+                <div className="w-full md:w-[570px] p-4 md:p-8 text-center md:text-left">
                     <h2 className="text-[24px] leading-[36px] text-white">
                         Our Story
                     </h2>
-                    <p className="text-[16px] leading-[24px] text-[#ACB5BB]">
+                    <p className="text-[16px]  leading-[24px] text-[#ACB5BB]">
                         Ames Investment Systems was born from a collaborative
                         effort. We started by consulting professionals to shape
                         our vision, generating proprietary models and software
@@ -98,7 +101,7 @@ const AboutUs = () => {
                         consistent performance.
                     </p>
                 </div>
-                <div className="w-full md:w-1/2 flex justify-center">
+                <div className="w-full md:w-1/2 flex justify-end">
                     <img
                         src={img2}
                         alt="aboutS2"
@@ -106,12 +109,15 @@ const AboutUs = () => {
                     />
                 </div>
             </section>
-
+            {/* How It Works */}
             <MissionAndValue />
 
             {/* sign up now card */}
             <div className="lg:mt-[-300px]">
-                <GetStartedCard title="Take the First Step to Smarter Investment Choices" />
+                <GetStartedCard
+                    buttonText="Visit Our Research "
+                    title="Take the First Step to Smarter Investment Choices"
+                />
             </div>
         </MainLayout>
     );

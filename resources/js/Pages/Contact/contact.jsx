@@ -68,24 +68,21 @@ export default function ContactPage() {
     return (
         <MainLayout>
             <div className=" w-full  relative overflow-hidden ">
-               
-                 {/* gradient-bg-lighting */}
-                 <div className="absolute top-0 ">
-                        <div className="flex justify-center items-center blur-[100px]">
-                            <img src={vector2} alt="vector2" />
-                        </div>
-                        {/* bg-bars */}
-                        <div className="absolute bottom-[650px] w-[80%] mx-auto h-[40%] z-0 opacity-80">
-                            <img
-                                src={bgLines}
-                                alt=""
-                                className="w-full h-full "
-                            />
-                        </div>
+                {/* gradient-bg-lighting */}
+                <div className="absolute top-0 ">
+                    <div className="flex justify-center items-center blur-[100px]">
+                        <img src={vector2} alt="vector2" />
                     </div>
+                    {/* bg-bars */}
+                    <div className="absolute bottom-[650px] w-[80%] mx-auto h-[40%] z-0 opacity-80">
+                        <img src={bgLines} alt="" className="w-full h-full " />
+                    </div>
+                </div>
                 <div className="flex flex-col items-center px-4 py-12  ">
                     <div className="grid  lg:grid-cols-2 gap-12 items-start">
-                        <ExternalButtons />
+                        <div className=" z-50">
+                            <ExternalButtons />
+                        </div>
                         <div className="bg-[#161618]  max-w-[619px]   backdrop-blur-sm rounded-lg p-6 space-y-6 z-10">
                             <h2 className="text-2xl font-bold text-white mb-8">
                                 Contact Us

@@ -25,7 +25,7 @@ export default function InvestmentChanges() {
     }, []);
 
     return (
-        <div className="w-[950px] mx-auto  bg-transparent  p-4 rounded-lg">
+        <div className="w-[950px] mx-auto    p-4 rounded-lg">
             <div className="grid  grid-cols-2 md:grid-cols-5  ">
                 {metrics.map((metric, index) => (
                     <div
@@ -35,7 +35,7 @@ export default function InvestmentChanges() {
                         transition={{ delay: index * 0.1 }}
                     >
                         <Card className="bg-transparent border-none ">
-                            <CardContent className="p-4 rounded-sm border border-gray-800">
+                            <CardContent className="p-4 bg-[#13171b] rounded-sm border border-gray-800">
                                 <div className="space-y-2">
                                     <p className="text-sm text-zinc-400 font-medium">
                                         {metric.label}

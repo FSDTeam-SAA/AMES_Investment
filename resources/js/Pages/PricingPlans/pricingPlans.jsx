@@ -12,21 +12,17 @@ import vector2 from "../../../../public/img/Vector 2.png";
 const pricingPlans = () => {
     return (
         <MainLayout>
-            <div className="min-h-screen bg-black/95 flex flex-col items-center px-4 py-16 relative">
-             {/* gradient-bg-lighting */}
-             <div className="absolute top-0 ">
-                        <div className="flex justify-center items-center blur-[130px]">
-                            <img src={vector2} alt="vector2" />
-                        </div>
-                        {/* bg-bars */}
-                        <div className="absolute inset-0 w-[80%] mx-auto h-[40%] z-0 opacity-60">
-                            <img
-                                src={bgLines}
-                                alt=""
-                                className="w-full h-full "
-                            />
-                        </div>
+            <div className="min-h-screen  flex flex-col items-center px-4 py-16 relative">
+                {/* gradient-bg-lighting */}
+                <div className="absolute top-0 ">
+                    <div className="flex justify-center items-center blur-[130px]">
+                        <img src={vector2} alt="vector2" />
                     </div>
+                    {/* bg-bars */}
+                    <div className="absolute inset-0 w-[80%] mx-auto h-[40%] z-0 opacity-60">
+                        <img src={bgLines} alt="" className="w-full h-full " />
+                    </div>
+                </div>
                 <div className="w-full max-w-6xl mx-auto text-center space-y-4 mb-12 md:mt-[-10px] z-10">
                     <Button
                         className="rounded-full h-[28px] scale-75 mb-5"

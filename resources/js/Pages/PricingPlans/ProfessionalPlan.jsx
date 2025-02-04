@@ -5,7 +5,7 @@ import basic from "../../../../public/img/pp-professional.png";
 
 const ProfessionalPlan = () => {
     return (
-        <Card className="bg-zinc-900/50 min-h-[590px] border-zinc-800 p-6 rounded-xl">
+        <Card className="bg-[#161618] z-50 min-h-[590px] border-zinc-800 p-6 rounded-xl">
             <div className="space-y-6">
                 <div className="flex flex-col items-center gap-6">
                     <div className="p-3 bg-[#161618] rounded-lg w-fit shadow-[inset_0px_7.4px_18.5px_0px_rgba(255,255,255,0.11)] border border-[#44444A]">
