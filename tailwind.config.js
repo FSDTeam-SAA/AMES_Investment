@@ -13,6 +13,9 @@ export default {
 
     theme: {
     	extend: {
+			backgroundImage: {
+				'custom-gradient': "radial-gradient(circle at top, rgba(84, 255, 170, 0.3) 30%, rgba(38, 239, 121, 0.2) 50%, rgba(0, 0, 0, 0.8) 80%)",
+			  },
     		fontFamily: {
     			sans: [
     				'Figtree',

@@ -8,6 +8,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import MainLayout from "@/Layouts/MainLayout";
 import ExternalButtons from "./ExternalButtons";
+
+import vector2 from "../../../../public/img/contactVector.png";
 export default function ContactPage() {
     const [isLoading, setIsLoading] = useState(false);
     const [message, setMessage] = useState("");
@@ -65,19 +67,26 @@ export default function ContactPage() {
 
     return (
         <MainLayout>
-            <div className=" w-full  relative overflow-hidden">
-                {/* <div
-        className="absolute inset-0 w-full h-full opacity-30"
-        style={{
-
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.12'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }}
-      /> */}
-
-                <div className=" mx-auto px-4 py-12   min-h-screen ">
+            <div className=" w-full  relative overflow-hidden ">
+               
+                 {/* gradient-bg-lighting */}
+                 <div className="absolute top-0 ">
+                        <div className="flex justify-center items-center blur-[100px]">
+                            <img src={vector2} alt="vector2" />
+                        </div>
+                        {/* bg-bars */}
+                        <div className="absolute bottom-[650px] w-[80%] mx-auto h-[40%] z-0 opacity-80">
+                            <img
+                                src={bgLines}
+                                alt=""
+                                className="w-full h-full "
+                            />
+                        </div>
+                    </div>
+                <div className="flex flex-col items-center px-4 py-12  ">
                     <div className="grid  lg:grid-cols-2 gap-12 items-start">
                         <ExternalButtons />
-                        <div className="bg-[#161618]  max-w-[619px]   backdrop-blur-sm rounded-lg p-6 space-y-6">
+                        <div className="bg-[#161618]  max-w-[619px]   backdrop-blur-sm rounded-lg p-6 space-y-6 z-10">
                             <h2 className="text-2xl font-bold text-white mb-8">
                                 Contact Us
                             </h2>

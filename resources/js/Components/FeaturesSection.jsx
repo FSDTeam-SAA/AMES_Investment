@@ -15,7 +15,7 @@ export default function FeaturesSection() {
 
         {/* Heading and Description */}
         <div className="mb-16 max-w-6xl">
-          <h1 className="mb-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
+          <h1 className="mb-6 text-2xl font-bold tracking-tight md:text-3xl lg:text-[40px]">
             Why Ames Investment Systems?
           </h1>
           <p className="text-lg text-gray-400 md:text-xl">

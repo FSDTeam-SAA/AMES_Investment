@@ -1,26 +1,32 @@
 import React from "react";
 import { Button } from "@/Components/ui/button";
-import dashboard from "../../../public/img/Dashboad.png";
-import { ArrowRight } from "lucide-react";
 import { Link } from "@inertiajs/react";
+
+import dashboard from "../../../public/img/Dashboad.png";
+import bgLines from "../../../public/img/BgLines.png";
+import vector2 from "../../../public/img/Vector 2.png";
+
 const HomeHero = () => {
     return (
         <div>
             <section>
-                <div className=" min-h-[600px] w-full flex flex-col items-center justify-center lg:pt-[120px] px-4 py-16  relative ">
-                    <div
-                        className="absolute inset-0 w-[20%] mx-auto translate-y-[-50px]"
-                        style={{
-                            background: `radial-gradient(circle at top, 
-        rgba(84, 255, 170, 0.3) 0%, 
-        rgba(38, 239, 121, 0.2) 30%, 
-        rgba(0, 0, 0, 0.8) 80%)`,
-                            filter: "blur(80px)",
-                            WebkitFilter: "blur(80px)",
-                        }}
-                    />
+                <div className=" min-h-[600px] w-full flex flex-col items-center justify-center lg:pt-[120px] px-4 py-16 from-gray-950 to-teal-950/30 relative ">
+                    {/* gradient-bg-lighting */}
+                    <div className="absolute top-0 ">
+                        <div className="flex justify-center items-center blur-[130px]">
+                            <img src={vector2} alt="vector2" />
+                        </div>
+                        {/* bg-bars */}
+                        <div className="absolute inset-0 w-[80%] mx-auto h-[40%] z-0 opacity-80">
+                            <img
+                                src={bgLines}
+                                alt=""
+                                className="w-full h-full "
+                            />
+                        </div>
+                    </div>
 
-                    <div className="max-w-3xl mx-auto text-center space-y-6 mb-[56px]">
+                    <div className="max-w-3xl mx-auto text-center space-y-6 mb-[56px] z-10">
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium text-white">
                             Unlock Smarter Investments with Cutting-Edge AI
                             Solutions
