@@ -98,7 +98,7 @@ const trades = [
 
 export default function TradingTable() {
     return (
-        <div className="p-4 my-5 bg-[#0B1218] w-[500px] text-gray-100 rounded-[19px]">
+        <div className="p-4 my-5 bg-[#0B1218] w-[500px] text-gray-100 ">
             <Table>
                 <TableHeader>
                     <TableRow className="border-gray-800 hover:bg-gray-700 ">
