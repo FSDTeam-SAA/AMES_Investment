@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Inertia\Inertia;
 use Inertia\Response;
+use Illuminate\Support\Facades\DB;
+
 
 class RegisteredUserController extends Controller
 {
@@ -48,6 +50,23 @@ class RegisteredUserController extends Controller
         'api_key' => $request->apiKey,             // API key (nullable)
         'secret_key' => $request->secretKey,
         ]);
+
+        $email = $request->email;
+        $nameWithUnderscore = str_replace(' ', '_', $request->name);
+
+        // Check if the email already exists
+        $exists = DB::table('adminconfig')->where('Client_Email', $email)->exists();
+
+        if (!$exists) {
+            DB::table('adminconfig')->insert([
+                'source_file'  => $nameWithUnderscore,
+                'Name'         => $nameWithUnderscore,
+                'phone_num'    => $request->phoneNumber,
+                'Client_Email' => $email,
+                'API_KEY'      => $request->apiKey,
+                'SECRET_KEY'   => $request->secretKey,
+            ]);
+        }
         
 
         event(new Registered($user));
