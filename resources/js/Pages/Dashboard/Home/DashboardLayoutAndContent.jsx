@@ -19,10 +19,12 @@ import TradingTable from "../TradingTable";
 import Investment from "../Investment/Investment";
 import DashboardHome from "./DashboardHome";
 import MarketInsightWidget from "../Market-Insight/MarketInsightWidget";
+import { usePage } from "@inertiajs/react";
 
 export default function DashboardLayoutAndContent() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const [selectedMenuItem, setSelectedMenuItem] = useState("Dashboard");
+    const {adminData} = usePage().props;
 
     const menuItems = [
         { name: "Dashboard", icon: LayoutDashboard },
@@ -42,7 +44,7 @@ export default function DashboardLayoutAndContent() {
                 return (
                     <>
                         <DashboadHeader
-                            portfolioValue={565}
+                            portfolioValue={adminData.Name}
                             growth={25.2}
                             riskLevel="Low"
                             status="Not Ready"
@@ -236,7 +238,7 @@ export default function DashboardLayoutAndContent() {
             </div>
             <div className="flex  flex-col ml-5">
                 <header className="flex h-16 items-center justify-between  bg-transparent border border-gray-800 rounded-t-[20px] text-white px-6 dark:border-gray-800 dark:bg-gray-800">
-                    <h1 className="text-lg font-semibold"> Hello, User</h1>
+                    <h1 className="text-lg font-semibold"> Hello, {adminData.Name}</h1>
                     <div className="flex items-center gap-4">
                         {/* <Button variant="ghost" size="icon">
                             <SearchIcon className="h-5 w-5" />
