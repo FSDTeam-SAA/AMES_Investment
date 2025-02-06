@@ -1,4 +1,5 @@
 "use client";
+import { usePage } from "@inertiajs/react";
 
 import {
     Table,
@@ -97,12 +98,17 @@ const trades = [
 ];
 
 export default function TradingTable() {
+    const { adminAlpacaSnapshot } = usePage().props;
+    console.log("".adminAlpacaSnapshot);
+
     return (
         <div className="p-4 my-5 bg-[#0B1218] w-[500px] text-gray-100 ">
             <Table>
                 <TableHeader>
                     <TableRow className="border-gray-800 hover:bg-gray-700 ">
-                        <TableHead className="text-gray-400 !bg-black">Symbol</TableHead>
+                        <TableHead className="text-gray-400 !bg-black">
+                            Symbol
+                        </TableHead>
                         <TableHead className="text-gray-400">
                             Open Timestamp
                         </TableHead>
