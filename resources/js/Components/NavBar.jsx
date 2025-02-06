@@ -8,6 +8,8 @@ export function NavBar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { auth } = usePage().props; // Accessing the authenticated user
 
+    console.log("user data :", auth.user);
+
     return (
         <header className="sticky  top-0 z-50  py-[15px]  bg-transparent backdrop-blur-lg">
             <div className="max-w-[1490px] mx-auto flex h-16 items-center   ">

@@ -12,6 +12,8 @@ const DashboardHome = () => {
 
     const [positions, setPositions] = useState([]);
     const [history, setHistory] = useState(null);
+    console.log(positions);
+    
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -40,12 +42,12 @@ const DashboardHome = () => {
 
     return (
         <div>
-            <div className="w-[80%]">
+            {/* <div className="w-[80%]">
                 <PortfolioChart data={history} />
             </div>
             <div className="w-[80%]">
                 <PositionsTable positions={positions} />
-            </div>
+            </div> */}
             <DashboardChange />
         </div>
     );
