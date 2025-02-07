@@ -80,7 +80,7 @@ export default function ContactPage() {
                 </div>
                 <div className="flex flex-col items-center px-4 py-12  ">
                     <div className="grid  lg:grid-cols-2 gap-12 items-start">
-                        <div className=" z-50">
+                        <div className=" z-20">
                             <ExternalButtons />
                         </div>
                         <div className="bg-[#161618]  max-w-[619px]   backdrop-blur-sm rounded-lg p-6 space-y-6 z-10">

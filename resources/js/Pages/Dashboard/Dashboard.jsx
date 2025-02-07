@@ -17,7 +17,7 @@ const Dashboard = () => {
               className="w-full h-full object-cover blur-[130px]"
             />
           </div>
-          <div className="absolute inset-0 flex justify-center items-center opacity-80">
+          <div className="absolute inset-0 flex justify-center items-center opacity-80 translate-y-[-250px]">
             <img src={bgLines || "/placeholder.svg"} alt="" className="w-[80%] h-[40%] object-contain" />
           </div>
         </div>

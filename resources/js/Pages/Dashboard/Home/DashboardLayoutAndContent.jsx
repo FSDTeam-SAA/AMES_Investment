@@ -152,7 +152,7 @@ export default function DashboardLayoutAndContent() {
                             {menuItems.map((item) => (
                                 <button
                                     key={item.name}
-                                    className={`flex w-full space-y-3 text-white items-center cursor-pointer gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-[#FFFFFF33] dark:hover:bg-gray-700 ${
+                                    className={`flex align-center w-full space-y-3 text-white items-center cursor-pointer gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-[#FFFFFF33] dark:hover:bg-gray-700 ${
                                         isSidebarOpen
                                             ? "justify-start text-gray-700 dark:text-gray-300"
                                             : "justify-center text-gray-500 dark:text-gray-400"
