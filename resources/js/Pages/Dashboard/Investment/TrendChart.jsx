@@ -1,5 +1,3 @@
-"use client";
-
 import {
     Line,
     LineChart,
@@ -16,36 +14,42 @@ import {
     ChartTooltipContent,
 } from "@/components/ui/chart";
 
-// Generate sample data
-const generateData = () => {
-    const baseValue = 1000;
-    const variance = 1000;
-    const dataPoints = 17;
-
-    return Array.from({ length: dataPoints }, (_, i) => {
-        const date = new Date(2024, 0, i + 1); // January 2024
-        const value =
-            baseValue + Math.sin(i * 0.5) * variance + Math.random() * 200;
-        return {
-            date: date.toLocaleDateString("en-US", {
-                month: "short",
-                day: "numeric",
-            }),
-            value: Math.round(value),
-        };
-    });
-};
-
-const data = generateData();
-const maxValue = Math.max(...data.map((d) => d.value));
-const minValue = Math.min(...data.map((d) => d.value));
-const avgValue = Math.round(
-    data.reduce((acc, curr) => acc + curr.value, 0) / data.length
-);
-
-const formatCurrency = (value) => `$${(value / 1000).toFixed(1)}K`;
+import { usePage } from "@inertiajs/react";
 
 export default function TrendChart() {
+    // Generate sample data
+    const generateData = () => {
+        const { adminPersonalValues } = usePage().props;
+        console.log("adminPersonalValues: ", adminPersonalValues);
+
+        const baseValue = 1000;
+        const variance = 1000;
+        const dataPoints = 90;
+
+        return Array.from({ length: dataPoints }, (_, i) => {
+            const date = new Date(2024, 0, i + 1); // January 2024
+
+            const value =
+                baseValue + Math.sin(i * 0.5) * variance + Math.random() * 200;
+            return {
+                date: date.toLocaleDateString("en-US", {
+                    month: "short",
+                    day: "numeric",
+                }),
+                value: Math.round(value),
+            };
+        });
+    };
+
+    const data = generateData();
+    console.log("mydata", data);
+    const maxValue = Math.max(...data.map((d) => d.value));
+    const minValue = Math.min(...data.map((d) => d.value));
+    const avgValue = Math.round(
+        data.reduce((acc, curr) => acc + curr.value, 0) / data.length
+    );
+
+    const formatCurrency = (value) => `$${(value / 1000).toFixed(1)}K`;
     return (
         <Card className="w-[750px] border-gray-800 bg-transparent text-white">
             <CardHeader className="pb-4">

@@ -2,10 +2,13 @@ import { useState, useEffect } from "react";
 
 import { Cell, Pie, PieChart, ResponsiveContainer, Legend } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { usePage } from "@inertiajs/react";
 
 // fort data fetch
 
 export function usePortfolioData() {
+    const { adminholdings } = usePage().props;
+
     const [data, setData] = useState([
         { symbol: "TECL", allocation: 21.7, color: "hsl(32, 100%, 50%)" },
         { symbol: "SOXL", allocation: 21.6, color: "hsl(16, 100%, 40%)" },
