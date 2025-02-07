@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Briefcase } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/Components/ui/button";
+import { set } from "react-hook-form";
+import ConfigurePortfolio from "./Configure/ConfigurePortfolio";
 
 const DashboadHeader = ({
     portfolioValue = 0,
@@ -9,8 +12,15 @@ const DashboadHeader = ({
     riskLevel = "Unknown",
     status = "Unknown",
 }) => {
+    const [showConfigureModal, setShowConfigureModal] = useState(false);
     return (
         <div className="flex items-center space-x-4 bg-transparent backdrop-blur-lg  text-white p-4 rounded-xl border border-gray-800 shadow-lg mt-0 ">
+            {showConfigureModal && (
+                <ConfigurePortfolio
+                    onClose={() => setShowConfigureModal(false)}
+                />
+            )}
+
             <div className="flex flex-col items-start  p-4 rounded-lg w-1/4">
                 <span className="text-sm text-gray-400 flex justify-between mb-[10px]">
                     <Briefcase className="mr-2" /> Portfolio Value
@@ -22,13 +32,19 @@ const DashboadHeader = ({
                 </span>
             </div>
             <div className="flex flex-col">
-                <button className="    mb-[10px] px-[18px] py-[9px] bg-gradient-to-r from-green-400 to-blue-500 rounded-lg">
+                <Button
+                    className="w-[110px] mb-[10px] px-[18px] py-[9px] "
+                    onClick={() => setShowConfigureModal(true)}
+                >
                     Configure
-                </button>
+                </Button>
 
-                <button className=" w-[110px] px-[18px] py-[9px] rounded-[6px] shadow-[inset_0px_7.4px_18.5px_0px_rgba(255,255,255,0.11)] p-6 bg-gray-800">
+                <Button
+                    variant="secondary"
+                    className=" w-[110px] px-[18px] py-[9px] rounded-[6px] "
+                >
                     More
-                </button>
+                </Button>
             </div>
 
             {/* Overall Growth */}

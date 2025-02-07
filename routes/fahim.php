@@ -6,6 +6,7 @@ use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\PricingPlansController;
 use App\Http\Controllers\ResearchController;
 
+
 Route::get('about-us', [AboutUsController::class, 'index'])
 ->name('about-us');
 
@@ -14,3 +15,6 @@ Route::get('pricing-plans', [PricingPlansController::class, 'index'])
 
 Route::get('research', [ResearchController::class, 'index'])
 ->name('research');
+
+
+
