@@ -1,11 +1,9 @@
-"use client";
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Check } from "lucide-react";
 
-export default function EmailUpdateForm() {
+export default function ChangeEmail({ closeForm }) {
     const [step, setStep] = useState(1);
     const [email, setEmail] = useState("");
 
@@ -21,7 +19,7 @@ export default function EmailUpdateForm() {
     };
 
     return (
-        <div className="min-h-[400px] w-full max-w-sm bg-black p-6 rounded-lg">
+        <div className="p-5">
             {step === 1 ? (
                 <div className="space-y-6">
                     <div className="text-center space-y-2">
@@ -50,17 +48,14 @@ export default function EmailUpdateForm() {
                             />
                         </div>
 
-                        <Button
-                            type="submit"
-                            className="w-full bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white"
-                        >
+                        <Button type="submit" className="w-full  text-white">
                             Submit
                         </Button>
                     </form>
 
                     <Button
-                        variant="ghost"
-                        className="w-full text-gray-400 hover:text-white hover:bg-gray-800"
+                        variant="secondary"
+                        className="w-full bg-[#2a2a2a] hover:bg-[#3a3a3a] text-gray-300"
                     >
                         Need Help? Contact Us
                     </Button>
@@ -77,11 +72,8 @@ export default function EmailUpdateForm() {
                         Email Updated
                     </h2>
 
-                    <Button
-                        onClick={handleGoBack}
-                        className="w-full bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white"
-                    >
-                        Go Back to Menu
+                    <Button onClick={closeForm} className="w-full text-white">
+                        Go Back to Dashboard
                     </Button>
                 </div>
             )}

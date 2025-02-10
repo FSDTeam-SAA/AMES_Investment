@@ -97,7 +97,7 @@ export function NavBar() {
                             href={route("logout")}
                             method="post"
                             as="button"
-                            className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
+                            className="bg-red-600 hover:bg-red-600/90 text-white py-2 px-4 rounded"
                         >
                             Logout
                         </Link>
