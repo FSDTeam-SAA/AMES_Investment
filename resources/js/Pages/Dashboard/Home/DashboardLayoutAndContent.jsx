@@ -24,7 +24,7 @@ import { usePage } from "@inertiajs/react";
 export default function DashboardLayoutAndContent() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const [selectedMenuItem, setSelectedMenuItem] = useState("Dashboard");
-    const { adminData } = usePage().props;
+    const { adminData, adminmainAccountInfo } = usePage().props;
 
     const menuItems = [
         { name: "Dashboard", icon: LayoutDashboard },
@@ -44,7 +44,7 @@ export default function DashboardLayoutAndContent() {
                 return (
                     <>
                         <DashboadHeader
-                            portfolioValue={adminData.Name}
+                            portfolioValue={adminmainAccountInfo.portfolio_value}
                             growth={25.2}
                             riskLevel="Low"
                             status="Not Ready"
@@ -57,7 +57,7 @@ export default function DashboardLayoutAndContent() {
                 return (
                     <div>
                         <DashboadHeader
-                            portfolioValue={55565}
+                            portfolioValue={adminmainAccountInfo.portfolio_value}
                             growth={2455.2}
                             riskLevel="Moderate"
                             status="Running"
@@ -71,7 +71,7 @@ export default function DashboardLayoutAndContent() {
                 return (
                     <div className="gradient-bg">
                         <DashboadHeader
-                            portfolioValue={565}
+                            portfolioValue={adminmainAccountInfo.portfolio_value}
                             growth={2535.2}
                             riskLevel="Moderate"
                             status="Running"
@@ -83,7 +83,10 @@ export default function DashboardLayoutAndContent() {
             case "Market Insights":
                 return (
                     <div>
-                        <DashboadHeader />
+                        <DashboadHeader 
+                            portfolioValue={adminmainAccountInfo.portfolio_value}
+
+                        />
                         <div className="h-[400px] w-full mt-5 rounded-[20px] overflow-hidden">
                             <MarketInsightWidget />
                         </div>

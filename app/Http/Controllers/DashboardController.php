@@ -26,6 +26,11 @@ class DashboardController extends Controller
             ->first();
         // dd($adminPlChange);
 
+        $adminmainAccountInfo = DB::table('adminmain_account_info')
+            ->where('source_file', $adminData->source_file)
+            ->first();
+        // dd($adminmainAccountInfo);
+
 
         $adminPersonalValues = DB::table('adminpersonal_values')
             ->distinct()
@@ -48,6 +53,7 @@ class DashboardController extends Controller
                 'user' => $user,
                 'adminData' => $adminData,
                 'adminPlChange' => $adminPlChange,
+                'adminmainAccountInfo' => $adminmainAccountInfo,
                 'adminPersonalValues' => $adminPersonalValues,
                 'adminholdings' => $adminholdings,
                 'adminAlpacaSnapshot' => $adminAlpacaSnapshot,
