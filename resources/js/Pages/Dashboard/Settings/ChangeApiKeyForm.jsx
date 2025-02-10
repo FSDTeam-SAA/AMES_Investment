@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Check } from "lucide-react";
 
-export default function ChangeApiKeyForm() {
+export default function ChangeApiKeyForm({ closeForm }) {
     const [step, setStep] = useState(1);
     const [formData, setFormData] = useState({
         agreedToTerms: false,
@@ -28,8 +28,8 @@ export default function ChangeApiKeyForm() {
     };
 
     return (
-        <div className="min-h-screen  flex items-center justify-center bg-black/95 p-4">
-            <Card className="w-full max-w-md  bg-black/90 border-gray-800">
+        <div className="">
+            <Card className="bg-black border-none w-full">
                 <CardHeader>
                     <CardTitle className="text-2xl font-bold text-center text-white">
                         {step === 3 ? "API Keys Updated" : `Change API Key`}
@@ -148,18 +148,15 @@ export default function ChangeApiKeyForm() {
                                     <Check className="w-8 h-8 text-black" />
                                 </div>
                             </div>
-                            <Button
-                                onClick={() => setStep(1)}
-                                className="w-full bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600"
-                            >
-                                Go Back to Menu
+                            <Button onClick={closeForm} className="w-full">
+                                Go Back to Dashboard
                             </Button>
                         </div>
                     )}
 
                     <Button
-                        variant="link"
-                        className="w-full mt-4 text-gray-400 hover:text-gray-300"
+                        variant="secondary"
+                        className="w-full bg-[#2a2a2a] hover:bg-[#3a3a3a] text-gray-300 mt-5"
                     >
                         Need Help? Contact Us
                     </Button>
