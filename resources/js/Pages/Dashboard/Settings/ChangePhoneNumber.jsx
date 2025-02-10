@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
 
-export default function ChangePhoneNumber() {
+export default function ChangePhoneNumber({ closeForm }) {
     const [step, setStep] = useState(1);
     const [phoneNumber, setPhoneNumber] = useState("");
 
@@ -22,7 +22,7 @@ export default function ChangePhoneNumber() {
     };
 
     return (
-        <Card className="w-[400px] mx-auto bg-[#121212] text-white border-none">
+        <Card className="bg-black text-white border-none">
             <CardContent className="pt-6">
                 {step === 1 ? (
                     <form onSubmit={handleSubmit} className="space-y-6">
@@ -54,7 +54,7 @@ export default function ChangePhoneNumber() {
                         <div className="space-y-4">
                             <Button
                                 type="submit"
-                                className="w-full py-6 text-white bg-gradient-to-r from-emerald-400 to-blue-500 hover:from-emerald-500 hover:to-blue-600"
+                                className="w-full  text-white "
                             >
                                 Submit
                             </Button>
@@ -80,10 +80,10 @@ export default function ChangePhoneNumber() {
                             </CardTitle>
                         </div>
                         <Button
-                            onClick={handleReset}
-                            className="w-full py-6 text-white bg-gradient-to-r from-emerald-400 to-blue-500 hover:from-emerald-500 hover:to-blue-600"
+                            onClick={closeForm}
+                            className="w-full py-6 text-white "
                         >
-                            Go Back to Menu
+                            Go Back to Dashboard
                         </Button>
                     </div>
                 )}

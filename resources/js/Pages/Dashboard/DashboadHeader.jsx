@@ -14,7 +14,7 @@ const DashboadHeader = ({
 }) => {
     const [showConfigureModal, setShowConfigureModal] = useState(false);
     return (
-        <div className="flex items-center space-x-4 bg-transparent backdrop-blur-lg  text-white p-4 rounded-xl border border-gray-800 shadow-lg mt-0 ">
+        <div className="flex items-center space-x-4 bg-transparent backdrop-blur-lg  text-white p-4 rounded-xl border-[0.75px] border-[#2C2C30] shadow-lg mt-0 ">
             {showConfigureModal && (
                 <ConfigurePortfolio
                     onClose={() => setShowConfigureModal(false)}
