@@ -1,5 +1,5 @@
 import MainLayout from "@/Layouts/MainLayout";
-import React from "react";
+import React, { useState } from "react";
 import { Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ProfessionalPlan from "./ProfessionalPlan";
@@ -10,6 +10,9 @@ import GetStartedCard from "@/Components/GetStartedCard";
 import bgLines from "../../../../public/img/BgLines.png";
 import vector2 from "../../../../public/img/Vector 2.png";
 const pricingPlans = () => {
+    const [planType, setPlanType] = useState("");
+    console.log(planType);
+
     return (
         <MainLayout>
             <div className="min-h-screen  flex flex-col items-center px-4 py-16 relative">
@@ -41,9 +44,9 @@ const pricingPlans = () => {
                 </div>
 
                 <div className="w-full max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
-                    <BasicPlan />
-                    <PlusPlan />
-                    <ProfessionalPlan />
+                    <BasicPlan setPlanType={setPlanType} />
+                    <PlusPlan setPlanType={setPlanType} />
+                    <ProfessionalPlan setPlanType={setPlanType} />
                 </div>
             </div>
             <GetStartedCard title="Start Your Path to Smarter Investing" />

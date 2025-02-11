@@ -2,10 +2,11 @@ import { Card } from "@/Components/ui/card";
 import { Star } from "lucide-react";
 import basic from "../../../../public/img/pp-basic.png";
 import React from "react";
+import { Button } from "@/Components/ui/button";
 
-const BasicPlan = () => {
+const BasicPlan = ({ setPlanType }) => {
     return (
-        <Card className="bg-[#161618] z-50 max-h-[520px] border-zinc-800 p-6 rounded-xl z-10">
+        <Card className="bg-[#161618] z-50 h-auto border-zinc-800 p-6 rounded-xl flex flex-col justify-between">
             <div className="space-y-6">
                 <div className="flex flex-col items-center gap-6">
                     <div className="p-3 bg-[#161618] rounded-lg w-fit shadow-[inset_0px_7.4px_18.5px_0px_rgba(255,255,255,0.11)] border border-[#44444A]">
@@ -59,6 +60,9 @@ const BasicPlan = () => {
                     </li>
                 </ul>
             </div>
+            <Button className="w-full" onClick={() => setPlanType("basic")}>
+                Get Started
+            </Button>
         </Card>
     );
 };

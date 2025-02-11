@@ -2,12 +2,13 @@ import { Card } from "@/Components/ui/card";
 import { Sparkles } from "lucide-react";
 import React from "react";
 import basic from "../../../../public/img/pp-plus.png";
+import { Button } from "@/Components/ui/button";
 
-const PlusPlan = () => {
+const PlusPlan = ({ setPlanType }) => {
     return (
         <Card
-            className="bg-[#161618] z-50  max-h-[598px]
-        0px] border-zinc-800 p-6 rounded-xl relative before:absolute before:inset-0 z-10"
+            className="bg-[#161618] z-50  h-auto
+        0px] border-zinc-800 p-6 rounded-xl relative before:absolute before:inset-0 flex flex-col justify-between"
         >
             <div className="space-y-6 relative">
                 <div className="flex flex-col items-center gap-6">
@@ -65,6 +66,12 @@ const PlusPlan = () => {
                     </li>
                 </ul>
             </div>
+            <Button
+                className=" z-50 w-full"
+                onClick={() => setPlanType("plus")}
+            >
+                Get Started
+            </Button>
         </Card>
     );
 };
