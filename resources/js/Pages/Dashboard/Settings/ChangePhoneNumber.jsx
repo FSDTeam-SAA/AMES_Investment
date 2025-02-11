@@ -5,20 +5,24 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
+import { useForm } from "@inertiajs/react";
 
 export default function ChangePhoneNumber({ closeForm }) {
     const [step, setStep] = useState(1);
-    const [phoneNumber, setPhoneNumber] = useState("");
+
+    const { data, setData, patch, processing, errors, reset } = useForm({
+        phoneNumber: "",
+    });
+
+    const handleInputChange = (e) => {
+        setData("phoneNumber", e.target.value);
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Submitted phone number:", phoneNumber);
-        setStep(2);
-    };
-
-    const handleReset = () => {
-        setStep(1);
-        setPhoneNumber("");
+        patch(route("user-phone.updatePhoneNumber"), {
+            onSuccess: () => setStep(2),
+        });
     };
 
     return (
@@ -35,28 +39,35 @@ export default function ChangePhoneNumber({ closeForm }) {
                                     1 of 1
                                 </p>
                             </CardHeader>
+
                             <div className="space-y-2">
                                 <label className="text-sm text-gray-400">
                                     Phone Number
                                 </label>
                                 <Input
                                     type="tel"
+                                    name="phoneNumber"
                                     placeholder="Your Phone Number"
-                                    value={phoneNumber}
-                                    onChange={(e) =>
-                                        setPhoneNumber(e.target.value)
-                                    }
+                                    value={data.phoneNumber}
+                                    onChange={handleInputChange}
                                     required
-                                    className="bg-[#2a2a2a] border-none text-white"
+                                    className={`bg-[#2a2a2a] border-none text-white ${
+                                        errors.phoneNumber
+                                            ? "border-red-500"
+                                            : ""
+                                    }`}
                                 />
+                                {errors.phoneNumber && (
+                                    <p className="text-red-500 text-sm">
+                                        {errors.phoneNumber}
+                                    </p>
+                                )}
                             </div>
                         </div>
+
                         <div className="space-y-4">
-                            <Button
-                                type="submit"
-                                className="w-full  text-white "
-                            >
-                                Submit
+                            <Button type="submit" className="w-full text-white">
+                                {processing ? "Submitting..." : "Submit"}
                             </Button>
                             <Button
                                 type="button"
@@ -81,7 +92,7 @@ export default function ChangePhoneNumber({ closeForm }) {
                         </div>
                         <Button
                             onClick={closeForm}
-                            className="w-full py-6 text-white "
+                            className="w-full py-6 text-white"
                         >
                             Go Back to Dashboard
                         </Button>
