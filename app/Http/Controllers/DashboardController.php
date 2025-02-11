@@ -13,6 +13,7 @@ class DashboardController extends Controller
 {
     public function index(): Response
     {
+
         $user = Auth::user();
         // dd($user);
         $adminData = DB::table('adminconfig')
