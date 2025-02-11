@@ -6,22 +6,23 @@ import ProfessionalPlan from "./ProfessionalPlan";
 import PlusPlan from "./PlusPlan";
 import BasicPlan from "./BasicPlan";
 import GetStartedCard from "@/Components/GetStartedCard";
-
+import { router } from "@inertiajs/react";
 import bgLines from "../../../../public/img/BgLines.png";
 import vector2 from "../../../../public/img/Vector 2.png";
-const pricingPlans = () => {
-    const [planType, setPlanType] = useState("");
-    console.log(planType);
+
+const PricingPlans = () => {
+    const handlePlanSelection = (plan) => {
+        console.log(plan);
+        router.post("stripe/payment", { plan: plan });
+    };
 
     return (
         <MainLayout>
-            <div className="min-h-screen  flex flex-col items-center px-4 py-16 relative">
-                {/* gradient-bg-lighting */}
+            <div className="min-h-screen flex flex-col items-center px-4 py-16 relative">
                 <div className="absolute top-0 ">
                     <div className="flex justify-center items-center blur-[130px]">
                         <img src={vector2} alt="vector2" />
                     </div>
-                    {/* bg-bars */}
                     <div className="absolute inset-0 w-[80%] mx-auto h-[40%] z-0 opacity-60">
                         <img src={bgLines} alt="" className="w-full h-full " />
                     </div>
@@ -44,9 +45,11 @@ const pricingPlans = () => {
                 </div>
 
                 <div className="w-full max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
-                    <BasicPlan setPlanType={setPlanType} />
-                    <PlusPlan setPlanType={setPlanType} />
-                    <ProfessionalPlan setPlanType={setPlanType} />
+                    <BasicPlan handlePlanSelection={handlePlanSelection} />
+                    <PlusPlan handlePlanSelection={handlePlanSelection} />
+                    <ProfessionalPlan
+                        handlePlanSelection={handlePlanSelection}
+                    />
                 </div>
             </div>
             <GetStartedCard title="Start Your Path to Smarter Investing" />
@@ -54,4 +57,4 @@ const pricingPlans = () => {
     );
 };
 
-export default pricingPlans;
+export default PricingPlans;

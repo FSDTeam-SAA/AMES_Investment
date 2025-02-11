@@ -4,7 +4,7 @@ import basic from "../../../../public/img/pp-basic.png";
 import React from "react";
 import { Button } from "@/Components/ui/button";
 
-const BasicPlan = ({ setPlanType }) => {
+const BasicPlan = ({ handlePlanSelection }) => {
     return (
         <Card className="bg-[#161618] z-50 h-auto border-zinc-800 p-6 rounded-xl flex flex-col justify-between">
             <div className="space-y-6">
@@ -60,7 +60,10 @@ const BasicPlan = ({ setPlanType }) => {
                     </li>
                 </ul>
             </div>
-            <Button className="w-full" onClick={() => setPlanType("basic")}>
+            <Button
+                className="w-full"
+                onClick={() => handlePlanSelection("basic")}
+            >
                 Get Started
             </Button>
         </Card>

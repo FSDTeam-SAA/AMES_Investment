@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
+use App\Http\Controllers\StripeController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
@@ -27,15 +28,16 @@ Route::middleware('auth')->group(function () {
     Route::patch('/users-email', [ProfileController::class, 'updateEmail'])->name('user-email.updateEmail');
     Route::patch('/user-phone', [ProfileController::class, 'updatePhoneNumber'])->name('user-phone.updatePhoneNumber');
     Route::patch('/user-api-secret', [ProfileController::class, 'updateApiKeySecretKey'])->name('user-apikey-secretkey.updateapikeysecretkey');
+
+    //Stripe Payment
+    Route::post('/stripe/payment', [StripeController::class, 'Payment'])->name('stripe.payment');
+    Route::get('/stripe/success', [StripeController::class, 'Success'])->name('stripe.success');
+    Route::get('/stripe/cancel', [StripeController::class, 'Cancel'])->name('stripe.cancel');
 });
 
-//email verification
 
 
 
-
-
-//
 
 // Auth::routes(['verify' => true]);
 

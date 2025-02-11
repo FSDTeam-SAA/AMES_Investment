@@ -4,7 +4,7 @@ import React from "react";
 import basic from "../../../../public/img/pp-plus.png";
 import { Button } from "@/Components/ui/button";
 
-const PlusPlan = ({ setPlanType }) => {
+const PlusPlan = ({ handlePlanSelection }) => {
     return (
         <Card
             className="bg-[#161618] z-50  h-auto
@@ -68,7 +68,7 @@ const PlusPlan = ({ setPlanType }) => {
             </div>
             <Button
                 className=" z-50 w-full"
-                onClick={() => setPlanType("plus")}
+                onClick={() => handlePlanSelection("plus")}
             >
                 Get Started
             </Button>

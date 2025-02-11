@@ -4,7 +4,7 @@ import React from "react";
 import basic from "../../../../public/img/pp-professional.png";
 import { Button } from "@/Components/ui/button";
 
-const ProfessionalPlan = ({ setPlanType }) => {
+const ProfessionalPlan = ({ handlePlanSelection }) => {
     return (
         <Card className="bg-[#161618] z-50 min-h-[590px] border-zinc-800 p-6 rounded-xl flex flex-col justify-between">
             <div className="space-y-6">
@@ -71,7 +71,10 @@ const ProfessionalPlan = ({ setPlanType }) => {
                         Intra-Day Trading Models
                     </li>
                 </ul>
-                <Button className="w-full" onClick={() => setPlanType("pro")}>
+                <Button
+                    className="w-full"
+                    onClick={() => handlePlanSelection("pro")}
+                >
                     Get Started
                 </Button>
             </div>
