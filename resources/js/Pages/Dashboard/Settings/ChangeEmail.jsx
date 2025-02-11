@@ -1,21 +1,27 @@
+"use client";
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Check } from "lucide-react";
+import { useForm } from "@inertiajs/react";
 
 export default function ChangeEmail({ closeForm }) {
     const [step, setStep] = useState(1);
-    const [email, setEmail] = useState("");
+
+    const { data, setData, patch, processing, errors, reset } = useForm({
+        email: "",
+    });
+
+    const handleInputChange = (e) => {
+        setData("email", e.target.value);
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Submitted email:", email);
-        setStep(2);
-    };
-
-    const handleGoBack = () => {
-        setStep(1);
-        setEmail("");
+        patch(route("user-email.updateEmail"), {
+            onSuccess: () => setStep(2),
+        });
     };
 
     return (
@@ -38,18 +44,29 @@ export default function ChangeEmail({ closeForm }) {
                                 Email
                             </label>
                             <Input
-                                id="email"
                                 type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                name="email"
+                                value={data.email}
+                                onChange={handleInputChange}
                                 placeholder="Your Email"
-                                className="bg-gray-800 border-gray-700 text-white"
+                                className={`bg-gray-800 border-gray-700 text-white ${
+                                    errors.email ? "border-red-500" : ""
+                                }`}
                                 required
                             />
+                            {errors.email && (
+                                <p className="text-red-500 text-sm">
+                                    {errors.email}
+                                </p>
+                            )}
                         </div>
 
-                        <Button type="submit" className="w-full  text-white">
-                            Submit
+                        <Button
+                            type="submit"
+                            className="w-full text-white"
+                            disabled={processing}
+                        >
+                            {processing ? "Submitting..." : "Submit"}
                         </Button>
                     </form>
 
