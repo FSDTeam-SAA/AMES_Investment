@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 import { ChevronRightIcon, IdCard } from "lucide-react";
 import dashboardlogo from "../../../../../public/img/dashboardlogo.png";
 
@@ -25,6 +25,12 @@ export default function DashboardLayoutAndContent() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const [selectedMenuItem, setSelectedMenuItem] = useState("Dashboard");
     const { adminData, adminmainAccountInfo } = usePage().props;
+    const [cleanName, setCleanName] = useState("");
+
+    useEffect(() => {
+        setCleanName(adminData.Name.replace(/[_\d]/g, " "));
+        console.log(cleanName);
+    });
 
     const menuItems = [
         { name: "Dashboard", icon: LayoutDashboard },
@@ -44,7 +50,9 @@ export default function DashboardLayoutAndContent() {
                 return (
                     <>
                         <DashboadHeader
-                            portfolioValue={adminmainAccountInfo.portfolio_value}
+                            portfolioValue={
+                                adminmainAccountInfo.portfolio_value
+                            }
                             growth={25.2}
                             riskLevel="Low"
                             status="Not Ready"
@@ -57,7 +65,9 @@ export default function DashboardLayoutAndContent() {
                 return (
                     <div>
                         <DashboadHeader
-                            portfolioValue={adminmainAccountInfo.portfolio_value}
+                            portfolioValue={
+                                adminmainAccountInfo.portfolio_value
+                            }
                             growth={2455.2}
                             riskLevel="Moderate"
                             status="Running"
@@ -71,7 +81,9 @@ export default function DashboardLayoutAndContent() {
                 return (
                     <div className="gradient-bg">
                         <DashboadHeader
-                            portfolioValue={adminmainAccountInfo.portfolio_value}
+                            portfolioValue={
+                                adminmainAccountInfo.portfolio_value
+                            }
                             growth={2535.2}
                             riskLevel="Moderate"
                             status="Running"
@@ -83,9 +95,10 @@ export default function DashboardLayoutAndContent() {
             case "Market Insights":
                 return (
                     <div>
-                        <DashboadHeader 
-                            portfolioValue={adminmainAccountInfo.portfolio_value}
-
+                        <DashboadHeader
+                            portfolioValue={
+                                adminmainAccountInfo.portfolio_value
+                            }
                         />
                         <div className="h-[400px] w-full mt-5 rounded-[20px] overflow-hidden">
                             <MarketInsightWidget />
@@ -232,7 +245,7 @@ export default function DashboardLayoutAndContent() {
                                             User
                                         </h4>
                                         <p className="text-sm text-gray-500 dark:text-gray-400">
-                                            user@example.com
+                                            {adminData.Client_Email}
                                         </p>
                                     </div>
                                 </div>
@@ -245,7 +258,7 @@ export default function DashboardLayoutAndContent() {
                 <header className="flex h-16 items-center justify-between  bg-transparent border border-gray-800 rounded-t-[20px] text-white px-6 dark:border-gray-800 dark:bg-gray-800">
                     <h1 className="text-lg font-semibold">
                         {" "}
-                        Hello, {adminData.Name}
+                        Hello, {cleanName}
                     </h1>
                     <div className="flex items-center gap-4">
                         {/* <Button variant="ghost" size="icon">
@@ -254,7 +267,7 @@ export default function DashboardLayoutAndContent() {
                         </Button>  */}
                         <button className="text-white flex hover:text-white/80 border-0 py-[8px] px-[24px] rounded-[6px] shadow-[inset_0px_7.4px_18.5px_0px_rgba(255,255,255,0.11)] p-6 bg-gray-800">
                             <IdCard className="mr-2" />
-                            AIS #: ABC2041123
+                            AIS #: {adminData.API_KEY}
                         </button>
                         {/* <Button variant="ghost" size="icon">
                             <img
