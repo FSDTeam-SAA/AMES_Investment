@@ -4,7 +4,7 @@ import HomeHero from "@/Components/HomeHero";
 import HowItWorks from "@/Components/HowItWorks";
 import MainLayout from "@/Layouts/MainLayout";
 import { Head, Link } from "@inertiajs/react";
-
+import PaymentFaild from "./Dashboard/payment/PaymentFaild";
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
     return (
         <>
@@ -12,6 +12,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
             <MainLayout>
                 <HomeHero />
+
                 <FeaturesSection />
                 <HowItWorks />
                 <div className="lg:mt-[-300px]">
