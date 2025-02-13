@@ -7,7 +7,12 @@ import {
     TableRow,
 } from "@/components/ui/table";
 
+import { usePage } from "@inertiajs/react";
+
 export function PositionsTable({ positions }) {
+    const { adminholdings } = usePage().props;
+    console.log("adminholdings: ", adminholdings);
+
     return (
         <div className="">
             <Table className="border border-gray-800 bg-transparent rounded-lg">

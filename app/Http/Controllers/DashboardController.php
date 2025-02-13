@@ -33,6 +33,7 @@ class DashboardController extends Controller
         // dd($adminmainAccountInfo);
 
 
+        /* query for portfolio_value chart in dashboard*/
         $adminPersonalValues = DB::table('adminpersonal_values')
             ->distinct()
             ->where('source_file', $adminData->source_file)
@@ -40,9 +41,12 @@ class DashboardController extends Controller
             ->get();
         // dd($adminPersonalValues);
 
-        $adminholdings = DB::table('adminpersonal_values')
+
+        /* query for table data in dashboard */
+        $adminholdings = DB::table('adminholdings')
             ->where('source_file', $adminData->source_file)->get();
         // dd($adminholdings);
+
 
         $adminAlpacaSnapshot = DB::table('admin_alpaca_snapshot')
             ->where('source_file', $adminData->source_file)->get();

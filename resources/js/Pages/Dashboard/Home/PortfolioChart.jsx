@@ -10,6 +10,8 @@ import {
     ChartTooltipContent,
 } from "@/components/ui/chart";
 
+import { usePage } from "@inertiajs/react";
+
 export function PortfolioChart({ data }) {
     const formattedData = data.timestamp.map((timestamp, index) => ({
         date: new Date(timestamp * 1000).toLocaleDateString("en-US", {
@@ -25,6 +27,9 @@ export function PortfolioChart({ data }) {
             color: "hsl(var(--chart-1))",
         },
     };
+
+    const { adminPersonalValues } = usePage().props;
+    console.log("adminPersonalValues", adminPersonalValues);
 
     return (
         <Card className="bg-[#2C2F38] border-gray-800 mt-5 mb-5 ">

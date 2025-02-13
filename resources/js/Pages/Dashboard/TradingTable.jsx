@@ -99,7 +99,9 @@ const trades = [
 
 export default function TradingTable() {
     const { adminAlpacaSnapshot } = usePage().props;
-    console.log("".adminAlpacaSnapshot);
+
+    console.log("admin alphacasnapsot: ".adminAlpacaSnapshot);
+    console.log("admin holding: ".adminholdings);
 
     return (
         <div className="p-4 my-5 bg-[#0B1218] w-[500px] text-gray-100 ">
