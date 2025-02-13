@@ -48,7 +48,7 @@ export function usePortfolioData() {
 
 export default function ProtfolioAllocation() {
     const data = usePortfolioData();
-
+    console.log("Portfolio allocation", data);
     return (
         <Card className="w-full max-w-[500px] border-gray-800 bg-transparent">
             <CardHeader>

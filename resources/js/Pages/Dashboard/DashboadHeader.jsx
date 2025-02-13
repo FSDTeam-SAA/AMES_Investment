@@ -11,6 +11,7 @@ const DashboadHeader = ({
     growth = 0,
     riskLevel = "Unknown",
     status = "Unknown",
+    openSetting,
 }) => {
     const [showConfigureModal, setShowConfigureModal] = useState(false);
     return (
@@ -42,6 +43,7 @@ const DashboadHeader = ({
                 <Button
                     variant="secondary"
                     className=" w-[110px] px-[18px] py-[9px] rounded-[6px] "
+                    onClick={openSetting}
                 >
                     More
                 </Button>

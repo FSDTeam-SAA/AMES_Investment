@@ -17,31 +17,12 @@ import {
 import { usePage } from "@inertiajs/react";
 
 export default function TrendChart() {
-    // Generate sample data
-    const generateData = () => {
-        const { adminPersonalValues } = usePage().props;
-        console.log("adminPersonalValues: ", adminPersonalValues);
+    const { adminPersonalValues } = usePage().props;
+    const data = adminPersonalValues.map((item) => ({
+        date: item.current_datetime,
+        value: item.portfolio_value,
+    }));
 
-        const baseValue = 1000;
-        const variance = 1000;
-        const dataPoints = 90;
-
-        return Array.from({ length: dataPoints }, (_, i) => {
-            const date = new Date(2024, 0, i + 1); // January 2024
-
-            const value =
-                baseValue + Math.sin(i * 0.5) * variance + Math.random() * 200;
-            return {
-                date: date.toLocaleDateString("en-US", {
-                    month: "short",
-                    day: "numeric",
-                }),
-                value: Math.round(value),
-            };
-        });
-    };
-
-    const data = generateData();
     console.log("mydata", data);
     const maxValue = Math.max(...data.map((d) => d.value));
     const minValue = Math.min(...data.map((d) => d.value));
