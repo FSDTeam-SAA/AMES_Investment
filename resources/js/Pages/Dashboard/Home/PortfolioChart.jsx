@@ -1,6 +1,5 @@
 "use client";
 
-import { TrendingUp } from "lucide-react";
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -12,13 +11,15 @@ import {
 
 import { usePage } from "@inertiajs/react";
 
-export function PortfolioChart({ data }) {
-    const formattedData = data.timestamp.map((timestamp, index) => ({
-        date: new Date(timestamp * 1000).toLocaleDateString("en-US", {
+export function PortfolioChart() {
+    const { adminPersonalValues } = usePage().props;
+
+    const formattedData = adminPersonalValues.map((item) => ({
+        date: new Date(item.current_datetime).toLocaleDateString("en-US", {
             month: "short",
             day: "numeric",
         }),
-        value: data.equity[index],
+        value: parseFloat(item.portfolio_value), // Convert string to number if needed
     }));
 
     const chartConfig = {
@@ -27,9 +28,6 @@ export function PortfolioChart({ data }) {
             color: "hsl(var(--chart-1))",
         },
     };
-
-    const { adminPersonalValues } = usePage().props;
-    console.log("adminPersonalValues", adminPersonalValues);
 
     return (
         <Card className="bg-[#2C2F38] border-gray-800 mt-5 mb-5 ">
