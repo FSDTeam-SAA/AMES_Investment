@@ -49,57 +49,24 @@ export default function DashboardLayoutAndContent() {
             case "Dashboard":
                 return (
                     <>
-                        <DashboadHeader
-                            portfolioValue={
-                                adminmainAccountInfo.portfolio_value
-                            }
-                            growth={25.2}
-                            riskLevel="Low"
-                            status="Not Ready"
-                            overallGrowth={2575065}
-                        />
                         <DashboardHome />
                     </>
                 );
             case "Investments":
                 return (
                     <div>
-                        <DashboadHeader
-                            portfolioValue={
-                                adminmainAccountInfo.portfolio_value
-                            }
-                            growth={2455.2}
-                            riskLevel="Moderate"
-                            status="Running"
-                            overallGrowth={25065}
-                        />
-
                         <Investment />
                     </div>
                 );
             case "Transaction":
                 return (
                     <div className="gradient-bg">
-                        <DashboadHeader
-                            portfolioValue={
-                                adminmainAccountInfo.portfolio_value
-                            }
-                            growth={2535.2}
-                            riskLevel="Moderate"
-                            status="Running"
-                            overallGrowth={5065}
-                        />
                         <TradingTable />
                     </div>
                 );
             case "Market Insights":
                 return (
                     <div>
-                        <DashboadHeader
-                            portfolioValue={
-                                adminmainAccountInfo.portfolio_value
-                            }
-                        />
                         <div className="h-[400px] w-full mt-5 rounded-[20px] overflow-hidden">
                             <MarketInsightWidget />
                         </div>
@@ -108,19 +75,13 @@ export default function DashboardLayoutAndContent() {
             case "Settings":
                 return (
                     <div>
-                        <DashboadHeader />
                         <div>
                             <ProfileSettings />
                         </div>
                     </div>
                 );
             case "Help & Center":
-                return (
-                    <h>
-                        <DashboadHeader />
-                        Help HElp HElp HElp
-                    </h>
-                );
+                return <h>Help HElp HElp HElp</h>;
             default:
                 return (
                     <h2 className="text-2xl text-white font-bold">
@@ -196,6 +157,7 @@ export default function DashboardLayoutAndContent() {
                                 </button>
                             ))}
                         </div>
+
                         {/* dawon menu  */}
                         <div>
                             {menuItems2.map((item) => (
@@ -285,7 +247,15 @@ export default function DashboardLayoutAndContent() {
                         </Button> */}
                     </div>
                 </header>
-                <main className="flex-1 border  border-gray-800 overflow-y-auto p-6 ">
+                <main className="flex-1 border  border-gray-800 overflow-y-auto p-6   ">
+                    <DashboadHeader
+                        portfolioValue={adminmainAccountInfo.portfolio_value}
+                        growth={25.2}
+                        riskLevel="Low"
+                        status="Not Ready"
+                        overallGrowth={2575065}
+                        openSetting={() => setSelectedMenuItem("Settings")}
+                    />
                     {renderContent()}
                 </main>
             </div>

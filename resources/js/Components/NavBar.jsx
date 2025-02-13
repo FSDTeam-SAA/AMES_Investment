@@ -21,9 +21,6 @@ export function NavBar() {
                             className=""
                         />
                     </Link>
-                    {/* <h1 className="text-lg lg:text-[24px] text-white font-extrabold">
-                        Ames Investment Systems
-                    </h1> */}
                 </div>
 
                 {/* Mobile Menu Button */}
