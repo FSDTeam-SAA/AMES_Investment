@@ -8,6 +8,7 @@ import { usePage } from "@inertiajs/react";
 
 export function usePortfolioData() {
     const { adminholdings } = usePage().props;
+    console.log("portfolio allocation with me:",adminholdings);
 
     const [data, setData] = useState([
         { symbol: "TECL", allocation: 21.7, color: "hsl(32, 100%, 50%)" },
@@ -32,8 +33,7 @@ export function usePortfolioData() {
                     ...item,
                     allocation: Number(
                         (
-                            item.allocation *
-                            (0.95 + Math.random() * 0.1)
+                            item.allocation 
                         ).toFixed(1)
                     ),
                 }))
@@ -48,7 +48,11 @@ export function usePortfolioData() {
 
 export default function ProtfolioAllocation() {
     const data = usePortfolioData();
-    console.log("Portfolio allocation", data);
+    // console.log("Portfolio allocation", data);
+
+    const { adminholdings,holdings } = usePage().props;
+    console.log("with me:",holdings);
+
     return (
         <Card className="w-full max-w-[500px] border-gray-800 bg-transparent">
             <CardHeader>
