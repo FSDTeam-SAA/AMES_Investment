@@ -12,7 +12,7 @@ import { usePage } from "@inertiajs/react";
 export function PositionsTable({ positions }) {
     const { adminholdings } = usePage().props;
     console.log("adminholdings: ", adminholdings);
-
+    console.log("dummy",positions)
     return (
         <div className="">
             <Table className="border border-gray-800 bg-transparent rounded-lg">
@@ -39,9 +39,9 @@ export function PositionsTable({ positions }) {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {positions.map((position, index) => (
+                    {adminholdings.map((position, index) => (
                         <TableRow
-                            key={position.symbol}
+                            key={position.Symbol}
                             className={`
                 border-gray-800 
                 bg-[#2c2f38]
@@ -52,19 +52,19 @@ export function PositionsTable({ positions }) {
                                 {index + 1}.
                             </TableCell>
                             <TableCell className="font-medium text-[#FFFFFF] ">
-                                {position.symbol}
+                                {position.Symbol}
                             </TableCell>
                             <TableCell className="text-right text-[#FFFFFF] ">
                                 $
                                 {Number.parseFloat(
-                                    position.market_value
+                                    position["Market Value"]
                                 ).toLocaleString(undefined, {
                                     minimumFractionDigits: 2,
                                     maximumFractionDigits: 2,
                                 })}
                             </TableCell>
                             <TableCell className="text-right text-[#FFFFFF] font-semibold">
-                                {Number.parseFloat(position.qty).toLocaleString(
+                                {Number.parseFloat(position.Qty).toLocaleString(
                                     undefined,
                                     {
                                         minimumFractionDigits: 2,
@@ -75,7 +75,7 @@ export function PositionsTable({ positions }) {
                             <TableCell className="text-right text-[#FFFFFF] font-semibold">
                                 $
                                 {Number.parseFloat(
-                                    position.cost_basis
+                                    position["Cost Basis"]
                                 ).toLocaleString(undefined, {
                                     minimumFractionDigits: 2,
                                     maximumFractionDigits: 2,
@@ -90,7 +90,7 @@ export function PositionsTable({ positions }) {
                             >
                                 $
                                 {Number.parseFloat(
-                                    position.unrealized_pl
+                                    position["Unrealized P/L"]  
                                 ).toLocaleString(undefined, {
                                     minimumFractionDigits: 2,
                                     maximumFractionDigits: 2,
