@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 class DashboardController extends Controller
@@ -41,16 +41,44 @@ class DashboardController extends Controller
             ->get();
         // dd($adminPersonalValues);
 
-
-        /* query for table data in dashboard */
-        $adminholdings = DB::table('adminholdings')
-            ->where('source_file', $adminData->source_file)->get();
-        // dd($adminholdings);
-
-
         $adminAlpacaSnapshot = DB::table('admin_alpaca_snapshot')
             ->where('source_file', $adminData->source_file)->get();
         // dd($admin_alpaca_snapshot);
+
+
+        /* query for table data in dashboard */
+
+
+        //query for portfolio donut chart in investment sidebar in dashboard
+        $sourceFile = $adminData->source_file;
+
+        $adminholdings = DB::table('adminholdings')
+            ->select(
+                'Symbol',
+                DB::raw("ROUND((SUM(Qty) * 100.0 / (SELECT SUM(Qty) FROM adminholdings WHERE source_file = '{$sourceFile}')), 2) as percentage")
+            )
+            ->where('source_file', $sourceFile)
+            ->groupBy('Symbol')
+            ->get();
+
+        // dd($adminholdings);
+
+
+        //query for portfolio donut chart in investment sidebar in dashboard
+        // $holdings = DB::table('adminholdings')
+        // ->select(
+        //     'Symbol',
+        //     DB::raw("ROUND((SUM(Qty) * 100.0 / (SELECT SUM(Qty) FROM adminholdings WHERE source_file = ?)), 2) as percentage", [$adminData->source_file])
+        // )
+        // ->where('source_file', $adminData->source_file)
+        // ->groupBy('Symbol')
+        // ->get();
+
+
+
+
+
+        // dd($holdings);        
 
 
         if ($adminData) {
@@ -60,8 +88,9 @@ class DashboardController extends Controller
                 'adminPlChange' => $adminPlChange,
                 'adminmainAccountInfo' => $adminmainAccountInfo,
                 'adminPersonalValues' => $adminPersonalValues,
-                'adminholdings' => $adminholdings,
+                'adminholdings' => $adminholdings, // may be some page can be missing(said)
                 'adminAlpacaSnapshot' => $adminAlpacaSnapshot,
+                
             ]);
         }
 
