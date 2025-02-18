@@ -24,12 +24,12 @@ class DashboardController extends Controller
 
         $adminPlChange = DB::table('adminperson_pl_change')
             ->where('source_file', $adminData->source_file)
-            ->first();
+            ->first()?? 'default value';
         // dd($adminPlChange);
 
         $adminmainAccountInfo = DB::table('adminmain_account_info')
             ->where('source_file', $adminData->source_file)
-            ->first();
+            ->first()?? 'default value';
         // dd($adminmainAccountInfo);
 
 
@@ -38,15 +38,14 @@ class DashboardController extends Controller
             ->distinct()
             ->where('source_file', $adminData->source_file)
             ->whereBetween('current_datetime', [Carbon::now()->subDays(90), Carbon::now()])
-            ->get();
+            ->get()?? 'default value';
         // dd($adminPersonalValues);
 
         $adminAlpacaSnapshot = DB::table('admin_alpaca_snapshot')
-            ->where('source_file', $adminData->source_file)->get();
+            ->where('source_file', $adminData->source_file)->get()?? 'default value';
         // dd($admin_alpaca_snapshot);
 
 
-        /* query for table data in dashboard */
 
 
         //query for portfolio donut chart in investment sidebar in dashboard
@@ -59,7 +58,7 @@ class DashboardController extends Controller
             )
             ->where('source_file', $sourceFile)
             ->groupBy('Symbol')
-            ->get();
+            ->get()?? 'default value';
 
         // dd($adminholdings);
 
