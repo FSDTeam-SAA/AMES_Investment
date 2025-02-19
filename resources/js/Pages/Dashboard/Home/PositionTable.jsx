@@ -10,8 +10,8 @@ import {
 import { usePage } from "@inertiajs/react";
 
 export function PositionsTable({ positions }) {
-    const { adminholdings } = usePage().props;
-    console.log("adminholdings: ", adminholdings);
+    const { pos } = usePage().props;
+    console.log("pos: ", pos);
     console.log("dummy",positions)
     return (
         <div className="">
@@ -39,7 +39,7 @@ export function PositionsTable({ positions }) {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {adminholdings.map((position, index) => (
+                    {pos.map((position, index) => (
                         <TableRow
                             key={position.Symbol}
                             className={`

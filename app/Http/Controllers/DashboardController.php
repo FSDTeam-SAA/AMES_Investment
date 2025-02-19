@@ -60,6 +60,10 @@ class DashboardController extends Controller
             ->groupBy('Symbol')
             ->get()?? 'default value';
 
+        /* query for table data in dashboard */
+        $pos = DB::table('adminholdings')
+            ->where('source_file', $adminData->source_file)->get();
+
         // dd($adminholdings);
 
 
@@ -89,6 +93,7 @@ class DashboardController extends Controller
                 'adminPersonalValues' => $adminPersonalValues,
                 'adminholdings' => $adminholdings, // may be some page can be missing(said)
                 'adminAlpacaSnapshot' => $adminAlpacaSnapshot,
+                'pos' => $pos,
                 
             ]);
         }
