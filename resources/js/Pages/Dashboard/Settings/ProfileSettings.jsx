@@ -6,17 +6,44 @@ import {
     DialogContent,
     DialogHeader,
     DialogTitle,
+    DialogTrigger,
 } from "@/Components/ui/dialog";
 import { MessageSquareText, X } from "lucide-react";
 import ChangeEmail from "./ChangeEmail";
 import ChangePhoneNumber from "./ChangePhoneNumber";
 import ChangeApiKeyForm from "./ChangeApiKeyForm";
+import { router } from "@inertiajs/react";
+import { ChangePriceingModal } from "./ChngePriceModal";
 
 const ProfileSettings = () => {
     const [openModal, setOpenModal] = useState(null);
 
     const openForm = (formType) => setOpenModal(formType);
     const closeForm = () => setOpenModal(null);
+
+    const handlePauseOrderSubmit = (e) => {
+        e.preventDefault();
+        
+        
+        console.log("Paused orders");
+
+        router.get(route("pause.orders"));
+
+        // onClose();
+    };
+
+    const handleStopSubmit = (e) => {
+        e.preventDefault();
+        
+        
+        console.log("Stopped orders");
+
+        router.get(route("status.stop"));
+
+        // onClose();
+    };
+
+
 
     return (
         <div className="flex gap-5 items-start mt-5">
@@ -46,15 +73,31 @@ const ProfileSettings = () => {
                     >
                         Update Or Change API Keys
                     </Button>
+                    <div>
+
+
+                    </div>
                     <Button
                         variant="custom"
-                        onClick={() => openForm("paymentPlan")}
                         className="bg-[#2C2C30] hover:bg-[#2C2C30]/80 text-[16px] text-[#FFFFFF] py-[25px] px-[12px]"
+                        onClick={() => openForm("paymentPlan")}
+
                     >
                         Update Or Change Payment Plan
                     </Button>
-                    <Button variant="ghost">
-                        <MessageSquareText /> Need Help? Talk to Our Chat Bot
+
+                    <Button
+                        variant="ghost"
+                        onClick={() =>
+                            window.open(
+                                "https://chatgpt.com/g/g-679d833f491881919fa835966956ba7c-ais-customer-support",
+                                "_blank",
+                                "noopener,noreferrer"
+                            )
+                        }
+                    >
+                        <MessageSquareText />
+                        Need Help? Talk to Our Chat Bot
                     </Button>
                 </div>
             </div>
@@ -63,12 +106,14 @@ const ProfileSettings = () => {
                 <Button
                     variant="custom"
                     className="bg-[#D15F0E] py-[13px] px-[24px] w-[124px] h-[38px] rounded-[6px] text-[#FFFFFF] text-[14px] hover:bg-[#D15F0E]/90"
+                    onClick={handlePauseOrderSubmit}
                 >
                     Pause Orders
                 </Button>
                 <Button
                     variant="custom"
                     className="bg-red-600 py-[13px] px-[24px] w-[124px] h-[38px] rounded-[6px] text-[#FFFFFF] text-[14px] hover:bg-red-600/90"
+                    onClick={handleStopSubmit}
                 >
                     STOP
                 </Button>
@@ -89,7 +134,8 @@ const ProfileSettings = () => {
                     {openModal === "apiKeys" && (
                         <ChangeApiKeyForm closeForm={closeForm} />
                     )}
-                    {/* {openModal === "paymentPlan" && <PaymentPlanForm />} */}
+
+                    {openModal === "paymentPlan" && <ChangePriceingModal />}
                 </DialogContent>
             </Dialog>
         </div>

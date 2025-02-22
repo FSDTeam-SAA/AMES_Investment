@@ -8,9 +8,10 @@ import {
 } from "@/components/ui/dialog";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
-import { Brain } from "lucide-react";
+import { Brain, CloudCog } from "lucide-react";
 import { RiskSlider } from "@/Components/ui/riskSlider";
 import aiSparkle from "../../../../../public/img/ai-sparkle.png";
+import { router } from "@inertiajs/react";
 
 export default function ConfigurePortfolio({ onClose }) {
     const [step, setStep] = useState(1);
@@ -40,8 +41,13 @@ export default function ConfigurePortfolio({ onClose }) {
 
     const handleRiskChange = (value) => {
         const newValue = value[0]; // Extract the number from the array
+        console.log(newValue)
         setRiskLevel(newValue);
         setFormData((prev) => ({ ...prev, riskLevel: newValue }));
+        console.log(newValue)
+
+        
+
     };
 
     const handleRequirementsChange = (e) => {
@@ -52,6 +58,9 @@ export default function ConfigurePortfolio({ onClose }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("Form Data:", formData);
+
+        router.post(route('configure.data'),{formData});
+
         onClose();
     };
 

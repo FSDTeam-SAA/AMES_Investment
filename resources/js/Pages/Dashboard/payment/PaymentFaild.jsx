@@ -11,9 +11,13 @@ import {
     DialogClose,
 } from "@/components/ui/dialog";
 
-const PaymentFaild = ({ open, onOpenChange }) => {
+const PaymentFaild = ({ open }) => {
+
+    const [isOpen, setIsOpen] = useState(open);
+    console.log("payment-Failed component: ", isOpen);
+
     return (
-        <Dialog open={open} onOpenChange={onOpenChange}>
+        <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogContent className="max-w-md h-[250px] bg-gray-900">
                 <DialogHeader>
                     <div className="flex justify-between items-center">
@@ -24,13 +28,13 @@ const PaymentFaild = ({ open, onOpenChange }) => {
                         </div>
                     </div>
                     <DialogTitle className="text-2xl text-white font-semibold text-center">
-                        Payment Faild
+                        Payment Failed
                     </DialogTitle>
                 </DialogHeader>
 
                 <Link href="/dashboard">
                     <Button
-                        onClick={() => onOpenChange(false)}
+                        onClick={() => setIsOpen(false)}
                         className="w-full py-4 border-none text-white"
                     >
                         Go Back to Dashboard

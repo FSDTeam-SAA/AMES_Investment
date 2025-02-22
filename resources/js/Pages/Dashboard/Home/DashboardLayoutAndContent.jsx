@@ -1,5 +1,5 @@
 import { use, useEffect, useState } from "react";
-import { ChevronRightIcon, IdCard } from "lucide-react";
+import { ChevronRightIcon, Contact, IdCard } from "lucide-react";
 import dashboardlogo from "../../../../../public/img/dashboardlogo.png";
 
 import {
@@ -19,13 +19,24 @@ import Investment from "../Investment/Investment";
 import DashboardHome from "./DashboardHome";
 import ProfileSettings from "../Settings/ProfileSettings";
 import MarketInsightWidget from "../Market-Insight/MarketInsightWidget";
-import { usePage } from "@inertiajs/react";
+import { router, usePage } from "@inertiajs/react";
+import PaymentSuccess from "../payment/payment-succes";
+// import { Inertia } from '@inertiajs/inertia';
 
 export default function DashboardLayoutAndContent() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const [selectedMenuItem, setSelectedMenuItem] = useState("Dashboard");
-    const { adminData, adminmainAccountInfo } = usePage().props;
+    const { adminData, adminmainAccountInfo,success } = usePage().props;
     const [cleanName, setCleanName] = useState("");
+
+
+
+    console.log('from payment :',usePage().props);
+
+    useEffect(() => {
+        setCleanName(adminData.Name.replace(/[_\d]/g, " "));
+        console.log(cleanName);
+    });
 
     useEffect(() => {
         setCleanName(adminData.Name.replace(/[_\d]/g, " "));
@@ -43,7 +54,7 @@ export default function DashboardLayoutAndContent() {
         { name: "Help & Center", icon: Info },
     ];
 
-    // Right Side Content Show
+
     const renderContent = () => {
         switch (selectedMenuItem) {
             case "Dashboard":
@@ -81,7 +92,10 @@ export default function DashboardLayoutAndContent() {
                     </div>
                 );
             case "Help & Center":
-                return <h>Help HElp HElp HElp</h>;
+                // Inertia.visit(route("contact"));
+                // return null;
+
+
             default:
                 return (
                     <h2 className="text-2xl text-white font-bold">
@@ -91,12 +105,22 @@ export default function DashboardLayoutAndContent() {
         }
     };
 
+
+    
+// contact page route push 
+    const handleMenuItemClick = (itemName) => {
+        if (itemName === "Help & Center") {
+          router.visit("/contact")
+        } else {
+          setSelectedMenuItem(itemName)
+        }
+      }
+    
     return (
         <div className="grid min-h-[682px] mt-[60px] border border-gray-800 rounded-t-lg p-5 w-full grid-cols-[auto_1fr] overflow-hidden">
             <div
-                className={`flex flex-col bg-transparent   text-white dark:bg-gray-800 transition-all duration-300 ${
-                    isSidebarOpen ? "w-64" : "w-16"
-                }`}
+                className={`flex flex-col bg-transparent   text-white dark:bg-gray-800 transition-all duration-300 ${isSidebarOpen ? "w-64" : "w-16"
+                    }`}
             >
                 <div className="flex h-16 items-center justify-between px-4">
                     <div className="flex items-center gap-2 font-semibold">
@@ -133,24 +157,21 @@ export default function DashboardLayoutAndContent() {
                             {menuItems.map((item) => (
                                 <button
                                     key={item.name}
-                                    className={`flex align-center w-full space-y-3 text-white items-center cursor-pointer gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-[#FFFFFF33] dark:hover:bg-gray-700 ${
-                                        isSidebarOpen
-                                            ? "justify-start text-gray-700 dark:text-gray-300"
-                                            : "justify-center text-gray-500 dark:text-gray-400"
-                                    } ${
-                                        selectedMenuItem === item.name
+                                    className={`flex align-center w-full space-y-3 text-white items-center cursor-pointer gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-[#FFFFFF33] dark:hover:bg-gray-700 ${isSidebarOpen
+                                        ? "justify-start text-gray-700 dark:text-gray-300"
+                                        : "justify-center text-gray-500 dark:text-gray-400"
+                                        } ${selectedMenuItem === item.name
                                             ? "bg-[#FFFFFF33] dark:bg-gray-700"
                                             : ""
-                                    }`}
+                                        }`}
                                     onClick={() =>
                                         setSelectedMenuItem(item.name)
                                     }
                                 >
                                     <item.icon className="h-5 w-5" />
                                     <span
-                                        className={`${
-                                            isSidebarOpen ? "block" : "hidden"
-                                        }`}
+                                        className={`${isSidebarOpen ? "block" : "hidden"
+                                            }`}
                                     >
                                         {item.name}
                                     </span>
@@ -158,35 +179,22 @@ export default function DashboardLayoutAndContent() {
                             ))}
                         </div>
 
-                        {/* dawon menu  */}
-                        <div>
-                            {menuItems2.map((item) => (
-                                <button
-                                    key={item.name}
-                                    className={`flex w-full text-white items-center cursor-pointer gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-[#FFFFFF33] dark:hover:bg-gray-700 ${
-                                        isSidebarOpen
-                                            ? "justify-start text-gray-700 dark:text-gray-300"
-                                            : "justify-center text-gray-500 dark:text-gray-400"
-                                    } ${
-                                        selectedMenuItem === item.name
-                                            ? "bg-[#FFFFFF33] dark:bg-gray-700"
-                                            : ""
-                                    }`}
-                                    onClick={() =>
-                                        setSelectedMenuItem(item.name)
-                                    }
-                                >
-                                    <item.icon className="h-5 w-5" />
-                                    <span
-                                        className={`${
-                                            isSidebarOpen ? "block" : "hidden"
-                                        }`}
-                                    >
-                                        {item.name}
-                                    </span>
-                                </button>
-                            ))}
-
+                     {/* Bottom menu */}
+            <div>
+              {menuItems2.map((item) => (
+                <button
+                  key={item.name}
+                  className={`flex w-full text-white items-center cursor-pointer gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-[#FFFFFF33] dark:hover:bg-gray-700 ${
+                    isSidebarOpen
+                      ? "justify-start text-gray-700 dark:text-gray-300"
+                      : "justify-center text-gray-500 dark:text-gray-400"
+                  } ${selectedMenuItem === item.name ? "bg-[#FFFFFF33] dark:bg-gray-700" : ""}`}
+                  onClick={() => handleMenuItemClick(item.name)}
+                >
+                  <item.icon className="h-5 w-5" />
+                  <span className={isSidebarOpen ? "block" : "hidden"}>{item.name}</span>
+                </button>
+              ))}
                             {/* profile card  */}
                             <CardHeader className="bg-[#2C2C30] my-2 p-2 rounded-[7px]">
                                 <div className="flex items-center space-x-4">
@@ -199,9 +207,8 @@ export default function DashboardLayoutAndContent() {
                                     </Avatar>
                                     <div
                                         // className="space-y-1 "
-                                        className={`space-y-1 ${
-                                            isSidebarOpen ? "block" : "hidden"
-                                        }`}
+                                        className={`space-y-1 ${isSidebarOpen ? "block" : "hidden"
+                                            }`}
                                     >
                                         <h4 className="text-[14px] font-semibold">
                                             User
@@ -251,9 +258,8 @@ export default function DashboardLayoutAndContent() {
                     <DashboadHeader
                         portfolioValue={adminmainAccountInfo.portfolio_value}
                         growth={25.2}
-                        riskLevel="Low"
                         status="Not Ready"
-                        overallGrowth={2575065}
+                        overallGrowth={(2575065).toLocaleString()}
                         openSetting={() => setSelectedMenuItem("Settings")}
                     />
                     {renderContent()}

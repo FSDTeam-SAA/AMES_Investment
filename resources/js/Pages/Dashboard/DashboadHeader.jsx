@@ -4,16 +4,24 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/Components/ui/button";
 import { set } from "react-hook-form";
 import ConfigurePortfolio from "./Configure/ConfigurePortfolio";
+import { usePage } from "@inertiajs/react";
 
 const DashboadHeader = ({
     portfolioValue = 0,
     overallGrowth = 0,
     growth = 0,
-    riskLevel = "Unknown",
     status = "Unknown",
     openSetting,
 }) => {
+
     const [showConfigureModal, setShowConfigureModal] = useState(false);
+    const { riskLevel,grow,sta } = usePage().props;
+
+    console.log("riskLevel: ", riskLevel);
+    console.log("growth: ", grow);
+    console.log("status: ", sta);
+
+
     return (
         <div className="flex items-center space-x-4 bg-transparent backdrop-blur-lg  text-white p-4 rounded-xl border-[0.75px] border-[#2C2C30] shadow-lg mt-0 ">
             {showConfigureModal && (
@@ -62,9 +70,9 @@ const DashboadHeader = ({
                     </div>
                     <div className="flex items-baseline gap-2 w-[168px]">
                         <div className="text-2xl text-white font-semibold">
-                            ${overallGrowth}
+                            ${(overallGrowth)}
                         </div>
-                        <div className="text-emerald-400">+{growth}%</div>
+                        <div className="text-emerald-400">+{grow}%</div>
                     </div>
                 </CardContent>
             </Card>
@@ -82,15 +90,14 @@ const DashboadHeader = ({
                     </div>
                     <div className="flex items-baseline gap-2">
                         <h1
-                            className={`font-bold text-center w-[168px] ${
-                                riskLevel === "Low"
+                            className={`font-bold text-center w-[168px] ${riskLevel === "Low"
                                     ? "text-[#4CBD88]"
                                     : riskLevel === "High"
-                                    ? "text-[#E15E00]"
-                                    : riskLevel === "Moderate"
-                                    ? "text-[#CCB116]"
-                                    : "text-[#4EBE8A]"
-                            }`}
+                                        ? "text-[#E15E00]"
+                                        : riskLevel === "Moderate"
+                                            ? "text-[#CCB116]"
+                                            : "text-[#4EBE8A]"
+                                }`}
                         >
                             {riskLevel}
                         </h1>
@@ -110,17 +117,16 @@ const DashboadHeader = ({
                     </div>
                     <div className="flex items-baseline gap-2">
                         <h1
-                            className={`font-bold text-center  w-[168px] ${
-                                status === "Not Ready"
+                            className={`font-bold text-center  w-[168px] ${status === "Not Ready"
                                     ? "text-red-500"
                                     : status === "Running"
-                                    ? "text-[#4EBE8A]"
-                                    : status === "Moderate"
-                                    ? "text-[#CCB116]"
-                                    : "text-[#4EBE8A]"
-                            }`}
+                                        ? "text-[#4EBE8A]"
+                                        : status === "Moderate"
+                                            ? "text-[#CCB116]"
+                                            : "text-[#4EBE8A]"
+                                }`}
                         >
-                            {status}
+                            {sta}
                         </h1>
                     </div>
                 </CardContent>

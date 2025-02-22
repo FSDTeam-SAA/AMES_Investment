@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\StripeController;
@@ -30,9 +31,16 @@ Route::middleware('auth')->group(function () {
     Route::patch('/user-api-secret', [ProfileController::class, 'updateApiKeySecretKey'])->name('user-apikey-secretkey.updateapikeysecretkey');
 
     //Stripe Payment
-    Route::post('/stripe/payment', [StripeController::class, 'Payment'])->name('stripe.payment');
-    Route::get('/stripe/success', [StripeController::class, 'Success'])->name('stripe.success');
-    Route::get('/stripe/cancel', [StripeController::class, 'Cancel'])->name('stripe.cancel');
+    Route::post('/stripe/payment', [StripeController::class, 'payment'])->name('stripe.payment');
+    Route::get('/stripe/success', [StripeController::class, 'success'])->name('stripe.success');
+    Route::get('/stripe/cancel', [StripeController::class, 'cancel'])->name('stripe.cancel');
+
+    //configure portfolio
+    Route::post('/configure-portfolio',[DashboardController::class,'configurePortfolio'])->name('configure.data');
+    Route::get('/pause-orders',[DashboardController::class,'pauseOrders'])->name('pause.orders');
+    Route::get('/status-stop',[DashboardController::class,'statusStop'])->name('status.stop');
+
+
 });
 
 

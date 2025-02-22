@@ -90,14 +90,32 @@ export function NavBar() {
                             </Link>
                         </>
                     ) : (
-                        <Link
-                            href={route("logout")}
-                            method="post"
-                            as="button"
-                            className="bg-red-600 hover:bg-red-600/90 text-white py-2 px-4 rounded"
-                        >
-                            Logout
-                        </Link>
+
+                        <div className="hidden md:flex md:items-center md:space-x-4">
+
+                            <Link
+                                href={route("dashboard")}
+                                method="get"
+                                as="button"
+                                className="bg-[#141B1D]  text-white py-2 px-4 rounded"
+                            >
+                                Dashboard
+                            </Link>
+
+                            <Link
+                                href={route("logout")}
+                                method="post"
+                                as="button"
+                                className="bg-red-600 hover:bg-red-600/90 text-white py-2 px-4 rounded"
+                            >
+                                Logout
+                            </Link>
+
+
+
+                        </div>
+
+
                     )}
                 </div>
 

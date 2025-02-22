@@ -8,6 +8,8 @@ use Inertia\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Validator; // ✅ Import Validator facade
+use App\Models\User; // ✅ Import User model
 
 class DashboardController extends Controller
 {
@@ -24,12 +26,12 @@ class DashboardController extends Controller
 
         $adminPlChange = DB::table('adminperson_pl_change')
             ->where('source_file', $adminData->source_file)
-            ->first()?? 'default value';
+            ->first() ?? 'default value';
         // dd($adminPlChange);
 
         $adminmainAccountInfo = DB::table('adminmain_account_info')
             ->where('source_file', $adminData->source_file)
-            ->first()?? 'default value';
+            ->first() ?? 'default value';
         // dd($adminmainAccountInfo);
 
 
@@ -38,11 +40,11 @@ class DashboardController extends Controller
             ->distinct()
             ->where('source_file', $adminData->source_file)
             ->whereBetween('current_datetime', [Carbon::now()->subDays(90), Carbon::now()])
-            ->get()?? 'default value';
+            ->get() ?? 'default value';
         // dd($adminPersonalValues);
 
         $adminAlpacaSnapshot = DB::table('admin_alpaca_snapshot')
-            ->where('source_file', $adminData->source_file)->get()?? 'default value';
+            ->where('source_file', $adminData->source_file)->get() ?? 'default value';
         // dd($admin_alpaca_snapshot);
 
 
@@ -58,7 +60,7 @@ class DashboardController extends Controller
             )
             ->where('source_file', $sourceFile)
             ->groupBy('Symbol')
-            ->get()?? 'default value';
+            ->get() ?? 'default value';
 
         /* query for table data in dashboard */
         $pos = DB::table('adminholdings')
@@ -77,11 +79,81 @@ class DashboardController extends Controller
         // ->groupBy('Symbol')
         // ->get();
 
+        /*query for riskLevel */
+
+        // $riskLevel = 'low';
+
+        if ($user->riskLevel <= 0) {
+            $riskLevel = 'Low';
+        } elseif ($user->riskLevel >0 && $user->riskLevel <= 32) {
+            $riskLevel = 'Medium';
+        } elseif ($user->riskLevel > 32 && $user->riskLevel <= 67) {
+            $riskLevel = 'High';
+        } elseif ($user->riskLevel > 67) {
+            $riskLevel = 'Super High';
+        }
 
 
+        /* query for overall growth */
+
+        // Get first and last date
+        $result = DB::table('adminpersonal_values')
+            ->select(
+                DB::raw('MIN(current_datetime) AS first_date'),
+                DB::raw('MAX(current_datetime) AS last_date')
+            )
+            ->where('source_file', $adminData->source_file)
+            ->first();
+
+        // Get the portfolio values for first and last dates
+        $firstPortfolioValue = DB::table('adminpersonal_values')
+            ->where('current_datetime', $result->first_date)
+            ->where('source_file', $adminData->source_file)
+            ->value('portfolio_value');
+
+        $lastPortfolioValue = DB::table('adminpersonal_values')
+            ->where('current_datetime', $result->last_date)
+            ->where('source_file', $adminData->source_file)
+            ->value('portfolio_value');
+
+        // Calculate the overall growth
+        if ($firstPortfolioValue && $lastPortfolioValue) {
+            if ($firstPortfolioValue > 0) {
+                $growth = (($lastPortfolioValue - $firstPortfolioValue) / $firstPortfolioValue) * 100;
+                $growth = round($growth, 2); // Round to 2 decimal places
+            } else {
+                $growth = 0; // Avoid division by zero if firstPortfolioValue is 0 or less
+            }
+        } else {
+            $growth = 0; // If any value is missing, consider growth as 0
+        }
+
+        if ($user->status == 'not ready') {
+            $status = 'Not Ready';
+        }
+        if ($user->status == 'pause orders') {
+            $status = 'Paused Orders';
+        } else if ($user->status == 'stop') {
+            $status = 'Stopped';
+        } else if ($user->requirement_created_at !== NULL && Carbon::parse($user->requirement_created_at)->addDays(2)->isPast()) {
+            $status = 'Running';
+        } else if ($user->status == 'building model') {
+            $status = 'Building Model';
+        }
 
 
-        // dd($holdings);        
+        /* query for last date */
+        $lastDate = DB::table('adminpersonal_values')
+            ->where('source_file', $adminData->source_file)
+            ->select(DB::raw('MAX(current_datetime) AS last_date'))
+            ->first();
+
+
+        // dd($holdings);   
+        
+        $userPricingPlan=$user->choose_payment_plan?$user->choose_payment_plan:'Choose Pricing Plan';
+        $success = session('success', false);
+        $cancel = session('cancel', false);
 
 
         if ($adminData) {
@@ -94,10 +166,86 @@ class DashboardController extends Controller
                 'adminholdings' => $adminholdings, // may be some page can be missing(said)
                 'adminAlpacaSnapshot' => $adminAlpacaSnapshot,
                 'pos' => $pos,
-                
+                'riskLevel' => $riskLevel,
+                'grow' => $growth,
+                'sta' => $status,
+                'lastDate'=>$lastDate,
+                'userPricingPlan'=>$userPricingPlan,
+                'success' => $success,
+                'cancel'=>$cancel,
+
             ]);
         }
 
         // return Inertia::render('Dashboard/Dashboard');
+    }
+
+    public function configurePortfolio(Request $request)
+    {
+        // Extract the formData array
+        $data = $request->input('formData');
+
+        // Debugging to check if data is extracted correctly
+        // dd($data);
+
+        $validator = Validator::make($data, [
+            'agreedToTerms' => 'required|boolean',
+            'riskLevel' => 'required|integer|max:100',
+            'requirements' => 'required|string',
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        // Assuming user authentication
+        $userId = Auth::id();
+
+        // Add or update the requirement_created_at timestamp
+        $data['requirement_created_at'] = now();
+        $data['status'] = 'building model';
+
+        User::updateOrInsert(
+            ['id' => $userId], // Condition to check existing user
+            $data
+        );
+
+        return back()->with('success', 'Your message has been sent!');
+    }
+
+
+    public function pauseOrders()
+    {
+        // dd('its working on pauseOrders');
+        $userId = auth::user()->id;
+        $user = User::find($userId);
+
+        if (!$user) {
+            return response()->json(['message' => 'User not found'], 404);
+        }
+        $user->status = 'pause orders';
+        $user->save();
+
+
+
+        return back()->with('success', 'Status has been updated!');
+    }
+
+    public function statusStop()
+    {
+        // dd('its working on status stop');
+
+        $userId = auth::user()->id;
+        $user = User::find($userId);
+
+        if (!$user) {
+            return response()->json(['message' => 'User not found'], 404);
+        }
+        $user->status = 'stop';
+        $user->save();
+
+
+
+        return back()->with('success', 'Stop Status has been updated!');
     }
 }

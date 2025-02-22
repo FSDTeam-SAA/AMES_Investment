@@ -11,8 +11,10 @@ use App\Models\User;
 
 class StripeController extends Controller
 {
-    public function Payment(Request $request)
+    public function payment(Request $request)
     {
+
+        session()->flash('success', true);
 
         $plan = $request->input('plan');
 
@@ -59,14 +61,21 @@ class StripeController extends Controller
             'cancel_url' => route('stripe.cancel'),
         ]);
 
+      
         // Return the session URL to the frontend
-        // dd($session);
         return Inertia::location($session->url);
     }
 
-    public function Success(Request $request)
+
+  
+
+    public function success(Request $request)
     {
-        // dd($request);
+        
+
+        session()->flash('success', true);
+        // $success = session('successs', true);
+        // dd($success);
         Stripe::setApiKey(config('stripe.sk'));
 
         $sessionId = $request->query('session_id');
@@ -93,13 +102,18 @@ class StripeController extends Controller
         $user->choose_payment_plan = $plan;
         $user->save();
 
-        // dd($request);
-        return redirect()->route('dashboard')->with('success', "Payment successful for the $plan plan!");
+
+        // Redirect to the dashboard
+        return redirect()->route('dashboard');
+
+
     }
 
-    public function Cancel()
+    public function cancel()
     {
+        // dd("cancel");
+        session()->flash('cancel', true);
         // return 'Payment was cancelled!';
-        return Inertia::location(route('dashboard'));
+        return redirect()->route('dashboard');
     }
 }

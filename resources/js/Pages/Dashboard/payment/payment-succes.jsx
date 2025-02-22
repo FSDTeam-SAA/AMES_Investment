@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Check, X } from "lucide-react";
 import {
@@ -8,10 +8,15 @@ import {
     DialogTitle,
     DialogClose,
 } from "@/components/ui/dialog";
-import { Link } from "@inertiajs/react";
-const PaymentSuccess = ({ open, onOpenChange }) => {
+import { Link, usePage } from "@inertiajs/react";
+
+const PaymentSuccess = ({ open }) => {
+
+    const [isOpen, setIsOpen] = useState(open);
+    console.log("payment-success component: ",isOpen)
+
     return (
-        <Dialog open={open} onOpenChange={onOpenChange}>
+        <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogContent className="max-w-md h-[250px] bg-gray-900">
                 <DialogHeader>
                     <div className="flex justify-between items-center">
@@ -20,17 +25,20 @@ const PaymentSuccess = ({ open, onOpenChange }) => {
                                 <Check className="w-8 h-8 text-white" />
                             </div>
                         </div>
-                        <DialogClose className="bg-black mt-[-50px]  rounded-full p-1">
+                        <DialogClose
+                            onClick={() => setIsOpen(false)}
+                            className="bg-black mt-[-50px] rounded-full p-1"
+                        >
                             <X className="w-5 h-5 text-white" />
                         </DialogClose>
                     </div>
                     <DialogTitle className="text-2xl text-white font-semibold text-center">
-                        Payment Successful
+                        {"Payment Successful"}
                     </DialogTitle>
                 </DialogHeader>
                 <Link href="/dashboard">
                     <Button
-                        onClick={() => onOpenChange(false)}
+                        onClick={() => setIsOpen(false)}
                         className="w-full py-4 border-none text-white"
                     >
                         Go Back to Dashboard

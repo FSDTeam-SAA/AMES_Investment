@@ -1,28 +1,34 @@
 import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import { usePage } from "@inertiajs/react";
 
 export default function DashboardChange() {
+
+    const { adminPlChange } = usePage().props;
+
     const [metrics, setMetrics] = useState([
-        { label: "Week % Change", value: -3.79 },
-        { label: "Quarter % Change", value: 4.38 },
-        { label: "6 Month % Change", value: 5.31 },
-        { label: "YTD % Change", value: 4.49 },
-        { label: "Yearly % Change", value: 2.21 },
+        { label: "Week % Change", value:parseFloat(adminPlChange.One_Week_Performance) },
+        { label: "Quarter % Change", value: parseFloat(adminPlChange.Quarter_Performance), },
+        { label: "6 Month % Change", value: parseFloat(adminPlChange["6-Month_Performance"]), },
+        { label: "YTD % Change", value: parseFloat(adminPlChange.YTD_Performance), },
+        { label: "Yearly % Change", value: parseFloat(adminPlChange.Yearly_Performance), },
     ]);
 
     // Simulate data updates
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setMetrics((prev) =>
-                prev.map((metric) => ({
-                    ...metric,
-                    value: +(Math.random() * 6).toFixed(2),
-                }))
-            );
-        }, 5000);
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         setMetrics((prev) =>
+    //             prev.map((metric) => ({
+    //                 ...metric,
+    //                 value: +(Math.random() * 6).toFixed(2),
+    //             }))
+    //         );
+    //     }, 5000);
 
-        return () => clearInterval(interval);
-    }, []);
+    //     return () => clearInterval(interval);
+    // }, []);
+
+    
 
     return (
         <div className="w-[950px]   bg-transparent  py-4 rounded-lg">

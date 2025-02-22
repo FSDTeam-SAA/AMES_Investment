@@ -4,10 +4,32 @@ import DashboardLayoutAndContent from "./Home/DashboardLayoutAndContent"
 
 import bgLines from "../../../../public/img/BgLines.png"
 import vector2 from "../../../../public/img/Vector 2.png"
+import {  usePage } from "@inertiajs/react";
+import { useEffect, useState } from "react"
+import { CloudCog } from "lucide-react"
+import PaymentSuccess from "./payment/payment-succes"
+import PaymentFailed from "./payment/PaymentFaild"
 
 const Dashboard = () => {
+
+      const {success,cancel } = usePage().props;
+      console.log("message from success:", success);
+      console.log("message from failed:", cancel);
+      
+      // const [isOpen, setIsOpen] = useState(false);
+
+      const [isOpen, setIsOpen] = useState(success);
+      const [isFailed, setIsFailed] = useState(cancel);
+
+      
+      console.log("Dashboard open for success",isOpen)
+      console.log("Dashboard open for fail",isFailed)
+
   return (
     <MainLayout>
+      {isOpen && <PaymentSuccess open={isOpen} />}
+      {isFailed && <PaymentFailed failed={isFailed} />}
+
       <div className="relative ">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 flex justify-center items-center">

@@ -6,6 +6,9 @@ import { getPositions, getPortfolioHistory } from "../AlpacaDataFetch";
 import { PortfolioChart } from "./PortfolioChart";
 import DashboardChange from "./DashboardChange";
 
+
+
+
 const DashboardHome = () => {
     const { auth } = usePage().props;
     console.log("dashboard", auth.user.api_key);
@@ -16,6 +19,9 @@ const DashboardHome = () => {
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const { lastDate } = usePage().props;
+
+    console.log("last date: ", lastDate);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -40,14 +46,31 @@ const DashboardHome = () => {
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
 
+    const { props } = usePage();
+    const { showSuccessModal } = props;
+
     return (
         <div>
+
+
             <div className="w-[80%]">
                 <PortfolioChart data={history} />
             </div>
+
             <div className="w-[80%]">
-                <PositionsTable positions={positions} />
+                <h1 className="text-white text-end mb-3">
+                    Last Updated at:{" "}
+                    {new Date(lastDate.last_date).toLocaleDateString("en-US", {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                    })}
+                </h1>
+                <div className="">
+                    <PositionsTable positions={positions} />
+                </div>
             </div>
+
             <DashboardChange />
         </div>
     );
