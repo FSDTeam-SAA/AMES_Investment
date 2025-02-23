@@ -68,7 +68,7 @@ const DashboadHeader = ({
                             </span>
                         </div>
                     </div>
-                    <div className="flex items-baseline gap-2 w-[168px]">
+                    <div className="flex items-baseline gap-2 min-w-[168px]">
                         <div className="text-2xl text-white font-semibold">
                             ${(overallGrowth)}
                         </div>

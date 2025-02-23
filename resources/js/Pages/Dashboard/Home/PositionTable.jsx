@@ -20,9 +20,9 @@ export function PositionsTable({ positions }) {
     return (
         <div className="max-h-[500px] overflow-y-auto">
             <Table className="border border-gray-800 bg-transparent rounded-lg">
-                <TableHeader>
-                    <TableRow className="border-gray-800">
-                        <TableHead className="w-[50px] font-medium text-[#FFFFFF]">
+                <TableHeader className="sticky top-0">
+                    <TableRow className="border-gray-800  ">
+                        <TableHead className="w-[50px] font-medium  text-[#FFFFFF]">
                             #
                         </TableHead>
                         <TableHead className="font-medium text-[#FFFFFF]">

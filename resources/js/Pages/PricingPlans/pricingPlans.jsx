@@ -18,7 +18,7 @@ const PricingPlans = () => {
 
     return (
         <MainLayout>
-            <div className="min-h-screen flex flex-col items-center px-4 py-16 relative">
+            <div className="min-h-screen z-10 flex flex-col items-center px-4 py-16 relative">
                 <div className="absolute top-0 ">
                     <div className="flex justify-center items-center blur-[130px]">
                         <img src={vector2} alt="vector2" />

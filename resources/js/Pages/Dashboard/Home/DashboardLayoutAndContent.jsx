@@ -256,7 +256,7 @@ export default function DashboardLayoutAndContent() {
                 </header>
                 <main className="flex-1 border  border-gray-800 overflow-y-auto p-6   ">
                     <DashboadHeader
-                        portfolioValue={adminmainAccountInfo.portfolio_value}
+                        portfolioValue={Number(adminmainAccountInfo.portfolio_value).toLocaleString()}
                         growth={25.2}
                         status="Not Ready"
                         overallGrowth={(2575065).toLocaleString()}
