@@ -43,7 +43,7 @@ export default function Register() {
         if (step < 3) {
             setStep(step + 1);
         } else {
-            post(route("register"), {
+            post(route("register.submit"), {
                 onFinish: () => reset("password", "password_confirmation"),
             });
         }

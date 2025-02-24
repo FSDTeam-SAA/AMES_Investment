@@ -85,14 +85,12 @@ export function NavBar() {
                             >
                                 Login
                             </Link>
-                            <Link href={route("register")}>
+                            <Link href={route("register.form")}>
                                 <Button>Sign Up</Button>
                             </Link>
                         </>
                     ) : (
-
                         <div className="hidden md:flex md:items-center md:space-x-4">
-
                             <Link
                                 href={route("dashboard")}
                                 method="get"
@@ -110,12 +108,7 @@ export function NavBar() {
                             >
                                 Logout
                             </Link>
-
-
-
                         </div>
-
-
                     )}
                 </div>
 

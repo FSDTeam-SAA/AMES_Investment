@@ -39,7 +39,7 @@ const HomeHero = () => {
                         </p>
 
                         <div className="hidden md:flex md:items-center justify-center md:space-x-4">
-                            <Link href={route("register")}>
+                            <Link href={route("register.form")}>
                                 <Button className="px-[24px] w-[124px]">
                                     Sign Up
                                 </Button>
