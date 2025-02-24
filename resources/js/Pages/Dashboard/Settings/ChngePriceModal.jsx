@@ -51,7 +51,7 @@ export function ChangePriceingModal() {
     };
 
     return (
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="sm:max-w-[425px] bg-black text-white">
             <DialogHeader>
                 <DialogTitle>Change Pricing Plan</DialogTitle>
                 <DialogDescription>
@@ -61,13 +61,14 @@ export function ChangePriceingModal() {
             <div className="grid gap-4 py-4">
                 <div className="grid grid-cols-4 items-center gap-4">
                     <Select
+                   
                         onValueChange={setSelectedPlan}
                         value={selectedPlan}
                     >
-                        <SelectTrigger className="col-span-4">
-                            <SelectValue placeholder="Select a plan" />
+                        <SelectTrigger className="col-span-4 bg-gray-300 text-black">
+                            <SelectValue  placeholder="Select a plan" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent >
                             <SelectItem value="basic">Basic</SelectItem>
                             <SelectItem value="plus">Plus</SelectItem>
                             <SelectItem value="pro">Pro</SelectItem>
