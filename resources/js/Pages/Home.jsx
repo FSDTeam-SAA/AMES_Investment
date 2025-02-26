@@ -5,6 +5,7 @@ import HowItWorks from "@/Components/HowItWorks";
 import MainLayout from "@/Layouts/MainLayout";
 import { Head, Link } from "@inertiajs/react";
 import PaymentFaild from "./Dashboard/payment/PaymentFaild";
+import CheckoutButton from "./PricingPlans/home";
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
     return (
         <>
@@ -19,6 +20,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     <GetStartedCard title="Take the First Step to Smarter Investment Choices" />
                 </div>
             </MainLayout>
+            {/* <CheckoutButton/> */}
         </>
     );
 }

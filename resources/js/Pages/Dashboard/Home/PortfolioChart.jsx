@@ -41,7 +41,7 @@ export function PortfolioChart() {
             <CardContent>
                 <ChartContainer
                     config={chartConfig}
-                    className="h-[300px] w-full"
+                    className="h-[300px]  w-full"
                 >
                     <LineChart
                         width={427} // Fixed width

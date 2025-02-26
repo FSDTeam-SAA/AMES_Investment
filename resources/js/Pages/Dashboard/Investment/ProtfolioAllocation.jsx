@@ -45,7 +45,7 @@ export function usePortfolioData() {
 
     return data;
 }
-
+ 
 export default function ProtfolioAllocation() {
     const data = usePortfolioData();
     // console.log("Portfolio allocation", data);
@@ -54,7 +54,7 @@ export default function ProtfolioAllocation() {
     console.log("with me:",holdings);
 
     return (
-        <Card className="w-full max-w-[500px] border-gray-800 bg-transparent">
+        <Card className="w-full max-w-[500px] border-gray-800 bg-gray-900">
             <CardHeader>
                 <CardTitle className="text-center text-white">
                     Portfolio Allocation

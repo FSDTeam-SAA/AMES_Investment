@@ -39,7 +39,7 @@ export default function InvestmentChanges() {
                         transition={{ delay: index * 0.1 }}
                     >
                         <Card className="bg-transparent border-none ">
-                            <CardContent className="p-4 bg-[#13171b] rounded-sm border border-gray-800">
+                            <CardContent className="p-4 bg-gray-900 rounded-sm border border-gray-800">
                                 <div className="space-y-2">
                                     <p className="text-sm text-zinc-400 font-medium">
                                         {metric.label}
