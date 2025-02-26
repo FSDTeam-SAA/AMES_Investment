@@ -58,7 +58,7 @@ const DashboadHeader = ({
             </div>
 
             {/* Overall Growth */}
-            <Card className="bg-[#FFFFFF05]  border-gray-800">
+            <Card className="bg-gray-900  border-gray-800">
                 <CardContent className="p-4">
                     <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center gap-2">
@@ -78,7 +78,7 @@ const DashboadHeader = ({
             </Card>
 
             {/* Risk level  */}
-            <Card className="bg-[#FFFFFF05] border-gray-800">
+            <Card className="bg-gray-900 border-gray-800">
                 <CardContent className="p-4">
                     <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center gap-2">
@@ -105,7 +105,7 @@ const DashboadHeader = ({
                 </CardContent>
             </Card>
             {/* Status */}
-            <Card className="bg-[#FFFFFF05] border-gray-800">
+            <Card className="bg-gray-900 border-gray-800">
                 <CardContent className="p-4">
                     <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center gap-2">

@@ -36,9 +36,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/stripe/cancel', [StripeController::class, 'cancel'])->name('stripe.cancel');
 
     //configure portfolio
-    Route::post('/configure-portfolio',[DashboardController::class,'configurePortfolio'])->name('configure.data');
-    Route::get('/pause-orders',[DashboardController::class,'pauseOrders'])->name('pause.orders');
-    Route::get('/status-stop',[DashboardController::class,'statusStop'])->name('status.stop');
+    Route::post('/configure-portfolio', [DashboardController::class, 'configurePortfolio'])->name('configure.data');
+    Route::get('/pause-orders', [DashboardController::class, 'pauseOrders'])->name('pause.orders');
+    Route::get('/status-stop', [DashboardController::class, 'statusStop'])->name('status.stop');
+
 
 
 });

@@ -32,13 +32,13 @@ export default function TrendChart() {
 
     const formatCurrency = (value) => `$${(value / 1000).toFixed(1)}K`;
     return (
-        <Card className="w-[750px] border-gray-800 bg-transparent text-white">
+        <Card className="w-[750px] bg-gray-900  border-gray-800  text-white">
             <CardHeader className="pb-4">
                 <CardTitle className="text-lg font-medium text-center  ">
                     Portfolio Trend{" "}
                 </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="text-white">
                 <ChartContainer
                     config={{
                         value: {

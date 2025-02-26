@@ -116,4 +116,37 @@ class StripeController extends Controller
         // return 'Payment was cancelled!';
         return redirect()->route('dashboard');
     }
+
+    // public function createCheckoutSession(Request $request)
+    // {
+    //     Stripe::setApiKey(env('STRIPE_SECRET'));
+
+    //     $session = Session::create([
+    //         'payment_method_types' => ['card'],
+    //         'line_items' => [[
+    //             'price_data' => [
+    //                 'currency' => 'usd',
+    //                 'product_data' => [
+    //                     'name' => 'Custom Product',
+    //                     'description' => 'A brief description of the product.',
+    //                 ],
+    //                 'unit_amount' => 5000, // Amount in cents ($50)
+    //             ],
+    //             'quantity' => 1,
+    //         ]],
+    //         'mode' => 'payment',
+    //         'success_url' => route('payment.success') . '?session_id={CHECKOUT_SESSION_ID}',
+    //         'cancel_url' => route('payment.cancel'),
+    //         'customer_email' => auth()->user()->email ?? null, // Attach logged-in user’s email
+    //         'metadata' => [
+    //             'user_id' => auth()->id(),
+    //             'custom_info' => 'Any additional data',
+    //         ]
+    //     ]);
+
+    //     return response()->json(['url' => $session->url]);
+    // }
+
+
+
 }
